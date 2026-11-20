@@ -1,0 +1,3915 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Godly TikTok — Download & Check</title>
+  <meta name="theme-color" content="#1e40af" id="meta-theme-color" />
+
+  <!-- Preconnect to APIs & Google Fonts for Sub-1s Lookup Speed -->
+  <link rel="preconnect" href="https://www.tikwm.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- JSZip for Photo Slideshow Bulk ZIP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
+
+  <style>
+    /* =========================================================================
+       1. EDITORIAL SWISS-GRID & TACTILE CAPSULE STUDIO DESIGN SYSTEM
+          - Mode 1 ("tiktok"): Deep Cobalt Blue × Pure Alabaster White
+          - Mode 2 ("check"):  Architectural Carbon Black × Crisp White
+          - 100% GPU-Composited (translate3d + opacity), Zero Blur Lag
+       ========================================================================= */
+    :root {
+      --bg-base: #f4f7ff;
+      --bg-card: #ffffff;
+      --bg-elevated: #f8faff;
+      --bg-subtle: #edf3ff;
+      --bg-pill-track: #e6eeff;
+      --border-hairline: #d0dfff;
+      --border-strong: #93b4ff;
+      --border-outer: rgba(30, 64, 175, 0.14);
+      --text-main: #091128;
+      --text-secondary: #3b4c73;
+      --text-muted: #64748b;
+      --accent: #1e40af;
+      --accent-bright: #2563eb;
+      --accent-grad: linear-gradient(135deg, #172554 0%, #1e40af 48%, #2563eb 100%);
+      --accent-soft: #dbeafe;
+      --accent-text: #1e3a8a;
+      --ring-focus: rgba(37, 99, 235, 0.2);
+      --shadow-studio: 0 22px 48px -16px rgba(23, 37, 84, 0.12), 0 4px 14px -3px rgba(30, 64, 175, 0.06);
+      --shadow-btn: 0 10px 24px -6px rgba(30, 64, 175, 0.42);
+      --guide-bg: #f0f6ff;
+      --guide-stroke: #bfdbfe;
+      --grid-line: rgba(30, 64, 175, 0.045);
+    }
+
+    body[data-platform="check"] {
+      --bg-base: #f4f4f5;
+      --bg-card: #ffffff;
+      --bg-elevated: #fafafa;
+      --bg-subtle: #f4f4f5;
+      --bg-pill-track: #e4e4e7;
+      --border-hairline: #d4d4d8;
+      --border-strong: #71717a;
+      --border-outer: rgba(9, 9, 11, 0.14);
+      --text-main: #09090b;
+      --text-secondary: #27272a;
+      --text-muted: #52525b;
+      --accent: #09090b;
+      --accent-bright: #27272a;
+      --accent-grad: linear-gradient(135deg, #09090b 0%, #18181b 55%, #27272a 100%);
+      --accent-soft: #e4e4e7;
+      --accent-text: #09090b;
+      --ring-focus: rgba(9, 9, 11, 0.15);
+      --shadow-studio: 0 22px 48px -16px rgba(9, 9, 11, 0.12), 0 4px 14px -3px rgba(9, 9, 11, 0.06);
+      --shadow-btn: 0 10px 24px -6px rgba(9, 9, 11, 0.34);
+      --guide-bg: #f4f4f5;
+      --guide-stroke: #d4d4d8;
+      --grid-line: rgba(9, 9, 11, 0.04);
+    }
+
+    * {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    button, a, input {
+      touch-action: manipulation;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      transition: color 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* GPU Opacity Crossfade Canvas Layers (0.85s smooth theme transition, 0 repaint lag) */
+    .gpu-theme-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .gpu-layer-tiktok,
+    .gpu-layer-check {
+      position: absolute;
+      inset: 0;
+      will-change: opacity;
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gpu-layer-tiktok {
+      background:
+        radial-gradient(circle at 14% 8%, rgba(219, 234, 254, 0.85) 0%, rgba(239, 246, 255, 0.4) 38%, transparent 70%),
+        radial-gradient(circle at 88% 92%, rgba(191, 219, 254, 0.65) 0%, transparent 60%),
+        linear-gradient(180deg, #eff5ff 0%, #ffffff 52%, #f0f6ff 100%);
+      opacity: 1;
+    }
+
+    .gpu-layer-check {
+      background:
+        radial-gradient(circle at 16% 10%, rgba(228, 228, 231, 0.75) 0%, transparent 62%),
+        radial-gradient(circle at 86% 90%, rgba(212, 212, 216, 0.55) 0%, transparent 60%),
+        linear-gradient(180deg, #f4f4f5 0%, #ffffff 52%, #f4f4f5 100%);
+      opacity: 0;
+    }
+
+    body[data-platform="check"] .gpu-layer-tiktok {
+      opacity: 0;
+    }
+
+    body[data-platform="check"] .gpu-layer-check {
+      opacity: 1;
+    }
+
+    /* Architectural Technical Grid Overlay */
+    .studio-grid-lines {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-size: 36px 36px;
+      background-image:
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      mask-image: radial-gradient(ellipse at 50% 28%, #000 35%, transparent 82%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 28%, #000 35%, transparent 82%);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* =========================================================================
+       2. FLOATING TACTILE PILL HEADER & @MAHIRU_LAYZER290 BADGE
+       ========================================================================= */
+    .site-header {
+      width: 100%;
+      padding: 14px 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+
+    .header-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      height: 60px;
+      padding: 0 10px 0 14px;
+      background: #ffffff;
+      border: 1.5px solid var(--border-hairline);
+      border-radius: 999px;
+      box-shadow: 0 12px 30px -10px rgba(15, 23, 42, 0.08), 0 0 0 4px rgba(255, 255, 255, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: border-color 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .brand-icon-box {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: var(--accent-grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-btn);
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.55s ease;
+    }
+
+    .brand-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15.5px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    /* Clickable Top-Right TikTok + GODLY Profile Pill */
+    .godly-pill-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 15px;
+      border-radius: 999px;
+      background: var(--bg-subtle);
+      border: 1.5px solid var(--border-hairline);
+      text-decoration: none;
+      cursor: pointer;
+      transform: translate3d(0, 0, 0);
+      transition:
+        transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.45s ease,
+        background-color 0.45s ease,
+        box-shadow 0.45s ease;
+    }
+
+    .godly-pill-link:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      transform: translate3d(0, -1.5px, 0);
+      box-shadow: 0 6px 16px -4px rgba(30, 64, 175, 0.18);
+    }
+
+    .godly-pill-link:active {
+      transform: scale3d(0.95, 0.95, 1);
+    }
+
+    .font-godly {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      background: linear-gradient(135deg, #091128 0%, #1e40af 52%, #2563eb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    body[data-platform="check"] .font-godly {
+      background: linear-gradient(135deg, #09090b 0%, #52525b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* =========================================================================
+       3. MAIN CONTAINER & 0.72s GLIDING PILL MODE SWITCHER
+       ========================================================================= */
+    .main-wrap {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 16px 14px 52px;
+      flex: 1;
+    }
+
+    .btn-smooth {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      user-select: none;
+      text-decoration: none;
+      font-family: inherit;
+      border-radius: 999px;
+      transform: translate3d(0, 0, 0);
+      transition:
+        transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 0.45s ease,
+        border-color 0.45s ease,
+        box-shadow 0.45s ease,
+        color 0.45s ease,
+        opacity 0.35s ease;
+    }
+
+    @media (hover: hover) {
+      .btn-smooth:hover:not(:disabled) {
+        transform: translate3d(0, -1.5px, 0);
+      }
+    }
+
+    .btn-smooth:active:not(:disabled) {
+      transform: scale3d(0.96, 0.96, 1);
+    }
+
+    .btn-smooth:disabled {
+      opacity: 0.62;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: var(--accent-grad);
+      color: #ffffff;
+      box-shadow: var(--shadow-btn);
+    }
+
+    /* Gliding Pill Switcher Track (0.72s Spring Curve, Pointer-Events Safe) */
+    .switcher-track {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: #ffffff;
+      border: 1.5px solid var(--border-hairline);
+      padding: 6px;
+      border-radius: 999px;
+      box-shadow: 0 12px 28px -10px rgba(15, 23, 42, 0.07);
+      overflow: hidden;
+    }
+
+    .switcher-pill-glider {
+      position: absolute;
+      top: 6px;
+      bottom: 6px;
+      left: 6px;
+      width: calc(50% - 6px);
+      border-radius: 999px;
+      background: var(--accent-grad);
+      box-shadow: var(--shadow-btn);
+      pointer-events: none;
+      z-index: 0;
+      will-change: transform;
+      transform: translate3d(0%, 0, 0);
+      transition:
+        transform 0.72s cubic-bezier(0.16, 1, 0.3, 1),
+        background 0.72s ease,
+        box-shadow 0.72s ease;
+    }
+
+    body[data-platform="check"] .switcher-pill-glider {
+      transform: translate3d(100%, 0, 0);
+    }
+
+    .tab-btn {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 46px;
+      border-radius: 999px;
+      background: transparent !important;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--text-secondary);
+      transition: color 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s ease;
+    }
+
+    .tab-btn.is-active {
+      color: #ffffff;
+    }
+
+    /* =========================================================================
+       4. STUDIO PEBBLE WORKSPACE CARD & CHOREOGRAPHED TRANSITIONS (0.65s–1.35s)
+       ========================================================================= */
+    .theme-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-hairline);
+      border-radius: 34px;
+      padding: 26px 18px 24px;
+      margin-top: 16px;
+      box-shadow: var(--shadow-studio), 0 0 0 4px rgba(255, 255, 255, 0.72);
+      will-change: transform, opacity;
+      transform: translate3d(0, 0, 0);
+      transition:
+        border-color 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.68s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Subtle Decorative Top Light Strip & Corner Glows */
+    .theme-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 24px;
+      right: 24px;
+      height: 3px;
+      border-radius: 0 0 999px 999px;
+      background: var(--accent-grad);
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .card-decor-accent {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+
+    .card-decor-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .card-decor-dot:nth-child(2) {
+      opacity: 0.5;
+    }
+
+    .card-decor-dot:nth-child(3) {
+      opacity: 0.25;
+    }
+
+    .hero-decor-divider {
+      width: 48px;
+      height: 3px;
+      margin: 10px auto 0;
+      border-radius: 999px;
+      background: var(--accent-soft);
+    }
+
+    .workspace-stage-out {
+      opacity: 0;
+      transform: translate3d(0, 12px, 0) scale3d(0.985, 0.985, 1);
+    }
+
+    @keyframes stageEnterSmooth {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, 16px, 0) scale3d(0.985, 0.985, 1);
+      }
+      100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+      }
+    }
+
+    .workspace-stage-in {
+      animation: stageEnterSmooth 0.78s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero-heading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      color: var(--text-main);
+    }
+
+    /* Capsule Command Input Bar */
+    .input-box-shell {
+      margin-top: 16px;
+      background-color: var(--bg-elevated);
+      border: 2px solid var(--border-hairline);
+      border-radius: 28px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      transition:
+        border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 0.45s ease,
+        box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @media (min-width: 500px) {
+      .input-box-shell {
+        flex-direction: row;
+        align-items: center;
+        border-radius: 999px;
+        padding: 7px 7px 7px 16px;
+      }
+    }
+
+    .input-box-shell:focus-within {
+      background-color: #ffffff;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--ring-focus);
+    }
+
+    @keyframes linkAttachedWave {
+      0% { transform: scale3d(1, 1, 1); }
+      40% { transform: scale3d(1.016, 1.016, 1); }
+      100% { transform: scale3d(1, 1, 1); }
+    }
+
+    .input-box-shell.link-attached-active {
+      border-color: var(--accent);
+      background-color: #ffffff;
+      animation: linkAttachedWave 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .input-row-inner {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .input-link-icon {
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-left: 6px;
+      opacity: 0.85;
+    }
+
+    #url-input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 10px 10px;
+      font-size: 13.8px;
+      font-weight: 600;
+      color: var(--text-main);
+      transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #url-input::placeholder {
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    #url-input.input-dissolving {
+      opacity: 0;
+      transform: translate3d(0, 4px, 0);
+    }
+
+    .btn-clear-url {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-right: 4px;
+    }
+
+    .btn-process-main {
+      height: 46px;
+      padding: 0 26px;
+      border-radius: 999px;
+      font-size: 13.8px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    @keyframes bannerReveal {
+      0% { opacity: 0; transform: translate3d(0, -6px, 0); }
+      100% { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+
+    .attached-link-banner {
+      margin-top: 11px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background-color: var(--accent-soft);
+      color: var(--accent-text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      font-weight: 700;
+      animation: bannerReveal 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .attached-url-preview {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      flex: 1;
+    }
+
+    /* Fast Skeleton Loader */
+    .skeleton-box {
+      margin-top: 16px;
+      background: var(--bg-elevated);
+      border: 1.5px solid var(--border-hairline);
+      border-radius: 26px;
+      padding: 15px;
+    }
+
+    .skeleton-bar {
+      background: linear-gradient(90deg, var(--accent-soft) 25%, var(--bg-subtle) 50%, var(--accent-soft) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 0.9s infinite linear;
+      border-radius: 999px;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    /* Choreographed Staggered Card Reveal (0.65s – 1.35s) */
+    @keyframes studioCardReveal {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, 18px, 0) scale3d(0.985, 0.985, 1);
+      }
+      100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+      }
+    }
+
+    .animate-smooth {
+      will-change: transform, opacity;
+      animation: studioCardReveal 0.78s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .stagger-1 { animation-delay: 0.06s; }
+    .stagger-2 { animation-delay: 0.16s; }
+    .stagger-3 { animation-delay: 0.28s; }
+    .stagger-4 { animation-delay: 0.40s; }
+    .stagger-5 { animation-delay: 0.52s; }
+
+    /* =========================================================================
+       5. "TẢI TIKTOK" MODE — MASTER HD PLAYER & IN-PLACE BINARY DOWNLOADER
+       ========================================================================= */
+    .meta-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-subtle);
+      border: 1.5px solid var(--border-hairline);
+      border-radius: 26px;
+      padding: 12px 14px;
+      margin-top: 16px;
+    }
+
+    .meta-thumb {
+      width: 50px;
+      height: 50px;
+      border-radius: 18px;
+      object-fit: cover;
+      border: 1.5px solid var(--border-strong);
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .meta-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .meta-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .meta-sub {
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+
+    .theme-badge {
+      background-color: var(--accent-soft);
+      color: var(--accent-text);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 10.5px;
+      font-weight: 800;
+    }
+
+    .badge-master-hdr {
+      background: var(--accent-grad);
+      color: #ffffff;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+
+    .player-card {
+      margin-top: 13px;
+      background: #ffffff;
+      border: 1.5px solid var(--border-hairline);
+      border-radius: 28px;
+      padding: 14px;
+      box-shadow: 0 10px 26px -10px rgba(30, 64, 175, 0.08);
+    }
+
+    .video-viewport {
+      position: relative;
+      width: 100%;
+      height: 205px;
+      border-radius: 22px;
+      background: #09090b;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .video-viewport video,
+    .video-viewport img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .center-play-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(9, 9, 11, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .center-play-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      background: rgba(30, 64, 175, 0.9);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .scrubber-row {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 4px;
+    }
+
+    .time-Readout {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      min-width: 42px;
+    }
+
+    .slim-scrubber {
+      -webkit-appearance: none;
+      appearance: none;
+      flex: 1;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .slim-scrubber::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 999px;
+      background: var(--accent);
+      border: 2.5px solid #ffffff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .controls-grid-3 {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .ctrl-btn {
+      height: 42px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .ctrl-btn-secondary {
+      background: var(--bg-subtle);
+      border: 1.5px solid var(--border-hairline);
+      color: var(--accent-text);
+    }
+
+    /* Smooth Accordion Collapsible Music Drawer (0.55s grid-template-rows) */
+    .music-toggle-bar {
+      margin-top: 12px;
+      width: 100%;
+      height: 44px;
+      border-radius: 999px;
+      background: var(--bg-subtle);
+      border: 1.5px solid var(--border-hairline);
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--accent-text);
+    }
+
+    .chevron-icon {
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .chevron-open {
+      transform: rotate(180deg);
+    }
+
+    .audio-accordion-shell {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition:
+        grid-template-rows 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        margin-top 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+      margin-top: 0;
+    }
+
+    .audio-accordion-shell.is-open {
+      grid-template-rows: 1fr;
+      opacity: 1;
+      margin-top: 10px;
+    }
+
+    .audio-accordion-inner {
+      overflow: hidden;
+    }
+
+    /* In-Place Download Buttons with Built-In Progress Fill */
+    .dl-actions-grid {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 11px;
+    }
+
+    @media (min-width: 460px) {
+      .dl-actions-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .dl-main-btn {
+      position: relative;
+      overflow: hidden;
+      height: 50px;
+      border-radius: 999px;
+      font-size: 13.2px;
+      font-weight: 800;
+      padding: 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .dl-secondary-btn {
+      background: #ffffff;
+      border: 2px solid var(--accent);
+      color: var(--accent-text);
+    }
+
+    .btn-progress-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 0%;
+      background: rgba(255, 255, 255, 0.24);
+      pointer-events: none;
+      transition: width 0.2s ease;
+    }
+
+    .dl-secondary-btn .btn-progress-bar {
+      background: rgba(30, 64, 175, 0.12);
+    }
+
+    /* Slideshow Photo Grid */
+    .photo-grid {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 11px;
+    }
+
+    @media (min-width: 480px) {
+      .photo-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .photo-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-hairline);
+      border-radius: 24px;
+      padding: 9px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    /* =========================================================================
+       6. "CHECK TIKTOK" MODE — MONOCHROME TELEMETRY & SCANNING DOTS (• • •)
+       ========================================================================= */
+    .bw-section-card {
+      margin-top: 14px;
+      background: #ffffff;
+      border: 1.5px solid #d4d4d8;
+      border-radius: 28px;
+      padding: 16px;
+      box-shadow: 0 12px 30px -12px rgba(9, 9, 11, 0.08);
+    }
+
+    .bw-header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #09090b;
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11.2px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .bw-author-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+      color: #09090b;
+      background: #f4f4f5;
+      border: 1.5px solid #d4d4d8;
+      padding: 6px 14px 6px 6px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 800;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
+    }
+
+    .bw-author-link:hover {
+      background: #e4e4e7;
+      transform: translate3d(0, -1.5px, 0);
+    }
+
+    .bw-stat-grid {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    @media (min-width: 480px) {
+      .bw-stat-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .bw-stat-box {
+      background: #fafafa;
+      border: 1.5px solid #e4e4e7;
+      border-radius: 22px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+    }
+
+    .bw-stat-box:hover {
+      transform: translate3d(0, -2px, 0);
+      border-color: #a1a1aa;
+    }
+
+    .bw-stat-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #52525b;
+    }
+
+    .bw-stat-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      color: #09090b;
+    }
+
+    .bw-dual-grid {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    @media (min-width: 500px) {
+      .bw-dual-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .bw-stream-card {
+      background: #fafafa;
+      border: 1.5px solid #e4e4e7;
+      border-radius: 22px;
+      padding: 13px 15px;
+    }
+
+    .bw-kv-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 7.5px 0;
+      border-bottom: 1px dashed #e4e4e7;
+      font-size: 12px;
+    }
+
+    .bw-kv-row:last-child {
+      border-bottom: none;
+    }
+
+    .bw-kv-key {
+      color: #52525b;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .bw-kv-val {
+      color: #09090b;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      text-align: right;
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    /* Animated Scanning Dots (• • •) while Probing Real MP4 Stream */
+    .scan-dots-wrap,
+    .scan-dots-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #e4e4e7;
+      height: 20px;
+    }
+
+    .scan-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #09090b;
+      animation: dotPulseBounce 0.9s infinite ease-in-out both;
+    }
+
+    .scan-dot:nth-child(1) { animation-delay: -0.28s; }
+    .scan-dot:nth-child(2) { animation-delay: -0.14s; }
+    .scan-dot:nth-child(3) { animation-delay: 0s; }
+
+    @keyframes dotPulseBounce {
+      0%, 80%, 100% {
+        transform: scale3d(0.45, 0.45, 1);
+        opacity: 0.35;
+      }
+      40% {
+        transform: scale3d(1.1, 1.1, 1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes valRevealPop {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, 4px, 0);
+      }
+      100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    .val-revealed {
+      animation: valRevealPop 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .yn-pill-no {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #09090b;
+      color: #ffffff;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .yn-pill-yes {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #ffffff;
+      color: #09090b;
+      border: 2px solid #09090b;
+      padding: 1px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* =========================================================================
+       7. ILLUSTRATED 3-STEP STUDIO GUIDE (DYNAMICALLY THEMED)
+       ========================================================================= */
+    .guide-grid {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 520px) {
+      .guide-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .guide-card {
+      background: var(--bg-elevated);
+      border: 1.5px solid var(--border-hairline);
+      border-radius: 24px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease;
+    }
+
+    .guide-card:hover {
+      transform: translate3d(0, -2px, 0);
+      border-color: var(--border-strong);
+    }
+
+    .guide-svg-box {
+      margin-bottom: 9px;
+      overflow: hidden;
+      border-radius: 18px;
+      background-color: var(--guide-bg);
+      border: 1px solid var(--guide-stroke);
+      padding: 6px;
+      transition: background-color 0.55s ease, border-color 0.55s ease;
+    }
+
+    /* Toast Popup */
+    .toast-popup {
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      transform: translate3d(-50%, 0, 0);
+      z-index: 50;
+      background: var(--accent);
+      color: #ffffff;
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.32);
+      white-space: nowrap;
+      max-width: 92vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @keyframes spinAnim {
+      to { transform: rotate(360deg); }
+    }
+
+    .spin-icon {
+      animation: spinAnim 0.72s linear infinite;
+    }
+  </style>
+</head>
+<body data-platform="tiktok">
+
+  <!-- GPU-Composited Opacity Crossfade Background Layers (Zero Scroll Lag) -->
+  <div class="gpu-theme-canvas" aria-hidden="true">
+    <div class="gpu-layer-tiktok"></div>
+    <div class="gpu-layer-check"></div>
+  </div>
+  <div class="studio-grid-lines" aria-hidden="true"></div>
+
+  <!-- FLOATING PILL HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-left">
+        <div class="brand-icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 3V15M12 15L7.5 10.5M12 15L16.5 10.5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 17V19C4 20.1 4.9 21 6 21H18C19.1 21 20 20.1 20 19V17" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="brand-title">Godly TikTok</span>
+      </div>
+
+      <!-- Right Corner: Clickable TikTok Logo + GODLY -> Opens @mahiru_layzer290 -->
+      <a
+        href="https://www.tiktok.com/@mahiru_layzer290?_r=1&_t=ZS-9BQVhnwmlkK"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="godly-pill-link"
+        title="Mở trang TikTok @mahiru_layzer290"
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M16.6 5.82C15.92 5.03 15.54 4.02 15.54 2.92H12.45V15.32C12.45 16.92 11.15 18.22 9.55 18.22C7.95 18.22 6.65 16.92 6.65 15.32C6.65 13.72 7.95 12.42 9.55 12.42C9.85 12.42 10.14 12.47 10.41 12.56V9.38C10.13 9.34 9.84 9.32 9.55 9.32C6.24 9.32 3.55 12.01 3.55 15.32C3.55 18.63 6.24 21.32 9.55 21.32C12.86 21.32 15.55 18.63 15.55 15.32V9.01C16.82 9.92 18.37 10.46 20.05 10.46V7.37C18.72 7.37 17.5 6.77 16.6 5.82Z" fill="#00f2fe" transform="translate(-0.7, -0.5)" />
+          <path d="M16.6 5.82C15.92 5.03 15.54 4.02 15.54 2.92H12.45V15.32C12.45 16.92 11.15 18.22 9.55 18.22C7.95 18.22 6.65 16.92 6.65 15.32C6.65 13.72 7.95 12.42 9.55 12.42C9.85 12.42 10.14 12.47 10.41 12.56V9.38C10.13 9.34 9.84 9.32 9.55 9.32C6.24 9.32 3.55 12.01 3.55 15.32C3.55 18.63 6.24 21.32 9.55 21.32C12.86 21.32 15.55 18.63 15.55 15.32V9.01C16.82 9.92 18.37 10.46 20.05 10.46V7.37C18.72 7.37 17.5 6.77 16.6 5.82Z" fill="#ff0050" transform="translate(0.7, 0.5)" />
+          <path d="M16.6 5.82C15.92 5.03 15.54 4.02 15.54 2.92H12.45V15.32C12.45 16.92 11.15 18.22 9.55 18.22C7.95 18.22 6.65 16.92 6.65 15.32C6.65 13.72 7.95 12.42 9.55 12.42C9.85 12.42 10.14 12.47 10.41 12.56V9.38C10.13 9.34 9.84 9.32 9.55 9.32C6.24 9.32 3.55 12.01 3.55 15.32C3.55 18.63 6.24 21.32 9.55 21.32C12.86 21.32 15.55 18.63 15.55 15.32V9.01C16.82 9.92 18.37 10.46 20.05 10.46V7.37C18.72 7.37 17.5 6.77 16.6 5.82Z" fill="#0f172a" />
+        </svg>
+        <span class="font-godly">GODLY</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="toast-popup hidden">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;">
+      <circle cx="12" cy="12" r="10" fill="#10b981"/>
+      <path d="M8 12.5L10.8 15.2L16.2 9.5" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span id="toast-text"></span>
+  </div>
+
+  <!-- MAIN WORKSPACE CONTAINER -->
+  <main class="main-wrap">
+
+    <!-- 2-MODE CAPSULE SWITCHER WITH 0.72s GLIDING PILL -->
+    <div class="switcher-track" role="tablist">
+      <div class="switcher-pill-glider" aria-hidden="true"></div>
+
+      <button
+        id="mode-btn-tiktok"
+        type="button"
+        class="btn-smooth tab-btn is-active"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" fill="currentColor" fill-opacity="0.18"/>
+          <path d="M15 6.2C14.4 5.5 14.1 4.7 14.1 3.8H11.6V14C11.6 15.3 10.5 16.4 9.2 16.4C7.9 16.4 6.8 15.3 6.8 14C6.8 12.7 7.9 11.6 9.2 11.6C9.5 11.6 9.7 11.6 9.9 11.7V9.1C9.7 9.1 9.5 9 9.2 9C6.5 9 4.3 11.2 4.3 14C4.3 16.7 6.5 18.9 9.2 18.9C11.9 18.9 14.1 16.7 14.1 14V8.8C15.1 9.5 16.4 10 17.8 10V7.5C16.7 7.5 15.7 7 15 6.2Z" fill="currentColor"/>
+        </svg>
+        <span>Download</span>
+        <span id="tiktok-dot" class="hidden" style="width:6px;height:6px;border-radius:50%;background:#93c5fd;"></span>
+      </button>
+
+      <button
+        id="mode-btn-check"
+        type="button"
+        class="btn-smooth tab-btn"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="12" r="4" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="1.8"/>
+          <line x1="12" y1="2.5" x2="12" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="12" y1="18" x2="12" y2="21.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Check</span>
+        <span id="check-dot" class="hidden" style="width:6px;height:6px;border-radius:50%;background:#a1a1aa;"></span>
+      </button>
+    </div>
+
+    <!-- MAIN INPUT & WORKSPACE STUDIO CARD -->
+    <section id="workspace-card" class="theme-card">
+      <div class="card-decor-accent" aria-hidden="true">
+        <span class="card-decor-dot"></span>
+        <span class="card-decor-dot"></span>
+        <span class="card-decor-dot"></span>
+      </div>
+
+      <h1 class="hero-heading">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
+          <rect x="2.5" y="2.5" width="19" height="19" rx="6" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.8"/>
+          <circle cx="12" cy="12" r="4.2" stroke="var(--accent)" stroke-width="2"/>
+          <circle cx="17" cy="7" r="1.2" fill="var(--accent)"/>
+        </svg>
+        <span id="hero-title">Tải Qua Link Sao Chép Liên Kết Tiktok</span>
+      </h1>
+      <div class="hero-decor-divider" aria-hidden="true"></div>
+
+      <!-- Capsule Command URL Input Form -->
+      <form id="download-form" novalidate>
+        <div id="input-wrap" class="input-box-shell">
+          <div class="input-row-inner">
+            <svg class="input-link-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+            <input
+              id="url-input"
+              type="url"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="Dán link https://vt.tiktok.com/... hoặc https://www.tiktok.com/..."
+            />
+            <button
+              id="btn-clear"
+              type="button"
+              class="btn-smooth btn-clear-url hidden"
+              aria-label="Xoá link"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+          </div>
+
+          <button
+            id="btn-process"
+            type="submit"
+            class="btn-smooth btn-primary btn-process-main"
+          >
+            <svg id="icon-bolt" width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <path d="M13 2L4.5 13.5H11.5L10.5 22L19.5 10.5H12.5L13 2Z" fill="#ffffff" stroke="#ffffff" stroke-width="1.4" stroke-linejoin="round"/>
+            </svg>
+            <svg id="icon-spinner" class="spin-icon hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6">
+              <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+            </svg>
+            <span id="btn-process-text">Xử Lí</span>
+          </button>
+        </div>
+
+        <!-- Animated Link-Attached Capsule Banner -->
+        <div id="attached-link-indicator" class="attached-link-banner hidden">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;">
+            <circle cx="12" cy="12" r="10" fill="var(--accent)"/>
+            <path d="M8 12.3L10.8 15L16.2 9.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span id="attached-platform-tag">Đã nhận diện link:</span>
+          <span id="attached-url-text" class="attached-url-preview"></span>
+        </div>
+      </form>
+
+      <!-- FAST SKELETON LOADER -->
+      <div id="loading-box" class="skeleton-box hidden">
+        <div style="display:flex;align-items:center;gap:11px;">
+          <div class="skeleton-bar" style="width:48px;height:48px;border-radius:18px;flex-shrink:0;"></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+            <div class="skeleton-bar" style="width:74%;height:12px;"></div>
+            <div class="skeleton-bar" style="width:46%;height:10px;"></div>
+          </div>
+        </div>
+        <div class="skeleton-bar" style="width:100%;height:40px;margin-top:12px;"></div>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- A. TẢI TIKTOK WORKSPACE (MASTER HD / HDR & IN-PLACE DOWNLOAD)     -->
+      <!-- ================================================================= -->
+      <div id="result-area" class="hidden">
+
+        <!-- Author & Master HD Quality Bar -->
+        <div class="meta-bar animate-smooth stagger-1">
+          <img id="res-thumb" src="" alt="Thumbnail" referrerpolicy="no-referrer" class="meta-thumb" />
+          <div class="meta-info">
+            <p id="res-title" class="meta-title"></p>
+            <div class="meta-sub">
+              <span id="res-author"></span>
+              <span id="res-badge-quality" class="badge-master-hdr">MASTER HD</span>
+              <span id="res-badge-duration" class="mono" style="font-size:10.5px;font-weight:700;color:var(--text-secondary);"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1. VIDEO & ACCORDION AUDIO VIEW -->
+        <div id="view-video" class="hidden">
+
+          <div class="player-card animate-smooth stagger-2">
+            <div id="video-stage" class="video-viewport">
+              <video
+                id="video-el"
+                playsinline
+                preload="metadata"
+                referrerpolicy="no-referrer"
+                controlslist="nodownload nofullscreen noremoteplayback"
+                disablepictureinpicture
+                oncontextmenu="return false;"
+              ></video>
+
+              <img
+                id="video-poster-fallback"
+                src=""
+                alt="Video Poster"
+                referrerpolicy="no-referrer"
+                class="hidden"
+              />
+
+              <div id="video-center-play" class="center-play-overlay">
+                <div class="center-play-circle">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="margin-left:2px;">
+                    <polygon points="6 4 20 12 6 20 6 4"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Scrubber -->
+            <div class="scrubber-row">
+              <span id="vid-time-current" class="time-Readout" style="text-align:right;">0:00</span>
+              <input
+                id="vid-seek-slider"
+                type="range"
+                min="0"
+                max="100"
+                step="0.1"
+                value="0"
+                aria-label="Tua video"
+                class="slim-scrubber"
+              />
+              <span id="vid-time-total" class="time-Readout">0:00</span>
+            </div>
+
+            <!-- 3 Equal-Sized Capsule Controls: « 5s | Phát | 5s » -->
+            <div class="controls-grid-3">
+              <button
+                id="btn-seek-back"
+                type="button"
+                class="btn-smooth ctrl-btn ctrl-btn-secondary"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/>
+                </svg>
+                <span>5s</span>
+              </button>
+
+              <button
+                id="btn-toggle-play"
+                type="button"
+                class="btn-smooth btn-primary ctrl-btn"
+              >
+                <span id="vid-btn-icon" style="display:flex;align-items:center;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </span>
+                <span id="bar-play-text">Phát</span>
+              </button>
+
+              <button
+                id="btn-seek-forward"
+                type="button"
+                class="btn-smooth ctrl-btn ctrl-btn-secondary"
+              >
+                <span>5s</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- COLLAPSIBLE "HIỆN NHẠC / ẨN NHẠC" ACCORDION BUTTON -->
+          <button
+            id="btn-toggle-music-drawer"
+            type="button"
+            class="btn-smooth music-toggle-bar animate-smooth stagger-3"
+          >
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9.5" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.8"/>
+                <path d="M9 15V9L16 7.5V13.5" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="7.8" cy="15" r="1.5" fill="var(--accent)"/>
+                <circle cx="14.8" cy="13.5" r="1.5" fill="var(--accent)"/>
+              </svg>
+              <span id="music-toggle-label">Hiện Nhạc</span>
+            </div>
+            <svg id="music-toggle-chevron" class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+
+          <!-- Smooth 0.55s Accordion Audio Drawer -->
+          <div id="audio-accordion-shell" class="audio-accordion-shell">
+            <div class="audio-accordion-inner">
+              <div class="player-card" style="margin-top:2px;">
+                <audio id="audio-el" preload="metadata" referrerpolicy="no-referrer" oncontextmenu="return false;"></audio>
+
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                  <span style="font-size:12.5px;font-weight:800;color:var(--text-main);">Nghe Thử Nhạc Gốc</span>
+                  <span id="aud-time-label" class="time-Readout">0:00 / 0:00</span>
+                </div>
+
+                <input
+                  id="aud-seek-slider"
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="0.1"
+                  value="0"
+                  aria-label="Tua nhạc"
+                  class="slim-scrubber"
+                  style="width:100%;"
+                />
+
+                <div class="controls-grid-3">
+                  <button
+                    id="btn-aud-back"
+                    type="button"
+                    class="btn-smooth ctrl-btn ctrl-btn-secondary"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/>
+                    </svg>
+                    <span>5s</span>
+                  </button>
+
+                  <button
+                    id="btn-audio-play"
+                    type="button"
+                    class="btn-smooth btn-primary ctrl-btn"
+                  >
+                    <span id="aud-btn-icon" style="display:flex;align-items:center;">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                    </span>
+                    <span id="audio-play-text">Phát</span>
+                  </button>
+
+                  <button
+                    id="btn-aud-forward"
+                    type="button"
+                    class="btn-smooth ctrl-btn ctrl-btn-secondary"
+                  >
+                    <span>5s</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- IN-PLACE BINARY DOWNLOAD BUTTONS (ZERO EXTERNAL REDIRECTS, 100% CAPCUT/APP COMPATIBLE) -->
+          <div class="dl-actions-grid animate-smooth stagger-4">
+            <button
+              id="btn-dl-video"
+              type="button"
+              class="btn-smooth btn-primary dl-main-btn"
+            >
+              <div id="vid-dl-progress" class="btn-progress-bar"></div>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="position:relative;z-index:1;flex-shrink:0;">
+                <circle cx="12" cy="12" r="10" fill="rgba(255,255,255,0.22)"/>
+                <path d="M12 7V15M12 15L8.5 11.5M12 15L15.5 11.5" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="8" y1="17.5" x2="16" y2="17.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+              </svg>
+              <span id="btn-dl-video-text" style="position:relative;z-index:1;">Tải Video (MP4)</span>
+            </button>
+
+            <button
+              id="btn-dl-audio"
+              type="button"
+              class="btn-smooth dl-main-btn dl-secondary-btn"
+            >
+              <div id="aud-dl-progress" class="btn-progress-bar"></div>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="position:relative;z-index:1;flex-shrink:0;">
+                <circle cx="12" cy="12" r="10" fill="var(--accent-soft)"/>
+                <path d="M10 15.5V7.5L16.5 6V14" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="8.5" cy="15.5" r="2" fill="var(--accent)"/>
+                <circle cx="15" cy="14" r="2" fill="var(--accent)"/>
+              </svg>
+              <span id="btn-dl-audio-text" style="position:relative;z-index:1;">Tải Nhạc (MP3)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. PHOTO SLIDESHOW VIEW -->
+        <div id="view-photo" class="hidden animate-smooth stagger-2">
+          <div class="player-card" style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+            <span id="photo-summary-text" style="font-size:13px;font-weight:800;color:var(--text-main);"></span>
+            <button
+              id="btn-dl-zip"
+              type="button"
+              class="btn-smooth btn-primary"
+              style="height:40px;padding:0 18px;border-radius:999px;font-size:12px;font-weight:800;"
+            >
+              Tải Tất Cả (ZIP)
+            </button>
+          </div>
+
+          <div id="photo-list-grid" class="photo-grid"></div>
+        </div>
+
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- B. CHECK TIKTOK WORKSPACE (MONOCHROME TELEMETRY & SCANNING DOTS)  -->
+      <!-- ================================================================= -->
+      <div id="check-result-area" class="hidden">
+
+        <!-- TOP PROFILE, DESCRIPTION & UPLOAD TIME CARD -->
+        <div class="bw-section-card animate-smooth stagger-1">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+            <a id="chk-author-link" href="#" target="_blank" rel="noopener noreferrer" class="bw-author-link">
+              <img id="chk-avatar" src="" alt="Avatar" referrerpolicy="no-referrer" style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:1.5px solid #09090b;" />
+              <div>
+                <span id="chk-nickname" style="display:block;line-height:1.15;font-size:12.5px;"></span>
+                <span id="chk-handle" class="mono" style="display:block;font-size:10.5px;color:#52525b;"></span>
+              </div>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7"/><path d="M7 7h10v10"/>
+              </svg>
+            </a>
+
+            <div style="text-align:right;">
+              <span id="chk-upload-date" class="mono" style="display:block;font-size:11.5px;font-weight:800;color:#09090b;"></span>
+              <span id="chk-upload-ago" style="display:block;font-size:10.5px;font-weight:700;color:#52525b;margin-top:2px;"></span>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;background:#f4f4f5;border:1.5px solid #e4e4e7;border-radius:20px;padding:11px 14px;">
+            <div style="font-size:10.5px;font-weight:800;text-transform:uppercase;color:#52525b;margin-bottom:4px;">
+              Mô tả video (Caption)
+            </div>
+            <p id="chk-description" style="font-size:12.5px;font-weight:600;line-height:1.5;color:#09090b;word-break:break-word;"></p>
+          </div>
+        </div>
+
+        <!-- SECTION 1: QUALITY (SCANNING DOTS • • • -> EXACT HARDWARE/BINARY STREAM REVEAL) -->
+        <div class="bw-section-card animate-smooth stagger-2">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <span class="bw-header-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="4" width="20" height="16" rx="6" stroke="#ffffff" stroke-width="2"/>
+                <circle cx="12" cy="12" r="4" fill="#ffffff"/>
+              </svg>
+              <span>QUALITY • CHẤT LƯỢNG & FPS THẬT</span>
+            </span>
+            <span id="chk-fps-master-badge" class="mono" style="font-size:11px;font-weight:800;background:#e4e4e7;color:#09090b;padding:4px 11px;border-radius:999px;"></span>
+          </div>
+
+          <div class="bw-dual-grid">
+            <div class="bw-stream-card">
+              <div style="display:flex;align-items:center;gap:7px;font-size:12px;font-weight:800;color:#09090b;margin-bottom:8px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                  <rect x="6" y="2" width="12" height="20" rx="4" stroke="#09090b" stroke-width="2.2"/>
+                  <circle cx="12" cy="18.5" r="1" fill="#09090b"/>
+                </svg>
+                <span>Phone Stream (App HD)</span>
+              </div>
+              <div class="bw-kv-row">
+                <span class="bw-kv-key">Độ phân giải</span>
+                <span id="chk-phone-res" class="bw-kv-val"></span>
+              </div>
+              <div class="bw-kv-row">
+                <span class="bw-kv-key">FPS thực tế</span>
+                <span id="chk-phone-fps" class="bw-kv-val"></span>
+              </div>
+              <div class="bw-kv-row">
+                <span class="bw-kv-key">Codec / Bitrate</span>
+                <span id="chk-phone-bitrate" class="bw-kv-val"></span>
+              </div>
+              <div class="bw-kv-row">
+                <span class="bw-kv-key">Dung lượng gốc</span>
+                <span id="chk-phone-size" class="bw-kv-val"></span>
+              </div>
+            </div>
+
+            <div class="bw-stream-card">
+              <div style="display:flex;align-items:center;gap:7px;font-size:12px;font-weight:800;color:#09090b;margin-bottom:8px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                  <rect x="2" y="3" width="20" height="18" rx="5" stroke="#09090b" stroke-width="2.2"/>
+                  <line x1="2" y1="8" x2="22" y2="8" stroke="#09090b" stroke-width="2"/>
+                </svg>
+                <span>Browser Stream (Web)</span>
+              </div>
+              <div class="bw-kv-row">
+                <span class="bw-kv-key">Độ phân giải</span>
+                <span id="chk-web-res" class="bw-kv-val"></span>
+              </div>
+              <div class="bw-kv-row">
+                <span class="bw-kv-key">FPS thực tế</span>
+                <span id="chk-web-fps" class="bw-kv-val"></span>
+              </div>
+              <div class="bw-kv-row">
+                <span class="bw-kv-key">Codec / Bitrate</span>
+                <span id="chk-web-bitrate" class="bw-kv-val"></span>
+              </div>
+              <div class="bw-kv-row">
+                <span class="bw-kv-key">Dung lượng Web</span>
+                <span id="chk-web-size" class="bw-kv-val"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2: STATISTICS -->
+        <div class="bw-section-card animate-smooth stagger-3">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <span class="bw-header-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="12" width="4" height="9" rx="1.5" fill="#ffffff"/>
+                <rect x="10" y="7" width="4" height="14" rx="1.5" fill="#ffffff"/>
+                <rect x="17" y="3" width="4" height="18" rx="1.5" fill="#ffffff"/>
+              </svg>
+              <span>STATISTICS • TƯƠNG TÁC THẬT</span>
+            </span>
+            <span id="chk-engagement-rate" class="mono" style="font-size:11px;font-weight:800;background:#e4e4e7;color:#09090b;padding:4px 11px;border-radius:999px;"></span>
+          </div>
+
+          <div class="bw-stat-grid">
+            <div class="bw-stat-box">
+              <div class="bw-stat-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#09090b" stroke-width="2.3">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+                <span>Lượt xem (View)</span>
+              </div>
+              <span id="chk-stat-views" class="bw-stat-val">0</span>
+            </div>
+
+            <div class="bw-stat-box">
+              <div class="bw-stat-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="#09090b">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <span>Lượt tim (Like)</span>
+              </div>
+              <span id="chk-stat-likes" class="bw-stat-val">0</span>
+            </div>
+
+            <div class="bw-stat-box">
+              <div class="bw-stat-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#09090b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+                <span>Bình luận</span>
+              </div>
+              <span id="chk-stat-comments" class="bw-stat-val">0</span>
+            </div>
+
+            <div class="bw-stat-box">
+              <div class="bw-stat-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="#09090b">
+                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                </svg>
+                <span>Lượt lưu</span>
+              </div>
+              <span id="chk-stat-saves" class="bw-stat-val">0</span>
+            </div>
+
+            <div class="bw-stat-box">
+              <div class="bw-stat-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#09090b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+                </svg>
+                <span>Đăng lại / Share</span>
+              </div>
+              <span id="chk-stat-shares" class="bw-stat-val">0</span>
+            </div>
+
+            <div class="bw-stat-box">
+              <div class="bw-stat-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#09090b" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span>Lượt tải video</span>
+              </div>
+              <span id="chk-stat-downloads" class="bw-stat-val">0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 3: REGION (200+ CUSTOM VECTOR FLAGS) & SHADOWBAN -->
+        <div class="bw-section-card animate-smooth stagger-4">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;">
+            <span class="bw-header-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
+                <circle cx="12" cy="11" r="2.5" fill="#ffffff"/>
+              </svg>
+              <span>SHADOWBAN & VÙNG QUỐC GIA</span>
+            </span>
+            <span id="chk-shadowban-pill" class="mono" style="font-size:11px;font-weight:800;padding:4px 11px;border-radius:999px;background:#09090b;color:#ffffff;"></span>
+          </div>
+
+          <div class="bw-stream-card">
+            <div class="bw-kv-row">
+              <span class="bw-kv-key">Quốc gia / Vùng đăng</span>
+              <span id="chk-region" class="bw-kv-val"></span>
+            </div>
+            <div class="bw-kv-row">
+              <span class="bw-kv-key">Shadowban (Yes / No)</span>
+              <span id="chk-shadowban-yn" class="bw-kv-val"></span>
+            </div>
+            <div class="bw-kv-row">
+              <span class="bw-kv-key">Kiểm tra lỗi / Hạn chế</span>
+              <span id="chk-video-issues" class="bw-kv-val"></span>
+            </div>
+            <div class="bw-kv-row">
+              <span class="bw-kv-key">Phân phối For You (FYP)</span>
+              <span id="chk-fyp-status" class="bw-kv-val"></span>
+            </div>
+            <div class="bw-kv-row">
+              <span class="bw-kv-key">Loại phân phối</span>
+              <span id="chk-ad-status" class="bw-kv-val"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 4: INFORMATION -->
+        <div class="bw-section-card animate-smooth stagger-5">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;">
+            <span class="bw-header-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9.5" stroke="#ffffff" stroke-width="2"/>
+                <line x1="12" y1="11" x2="12" y2="16" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+                <circle cx="12" cy="7.5" r="1.3" fill="#ffffff"/>
+              </svg>
+              <span>INFORMATION • THÔNG TIN CHI TIẾT</span>
+            </span>
+          </div>
+
+          <div class="bw-stream-card">
+            <div class="bw-kv-row">
+              <span class="bw-kv-key">Video ID</span>
+              <span id="chk-video-id" class="bw-kv-val"></span>
+            </div>
+            <div class="bw-kv-row">
+              <span class="bw-kv-key">Định dạng gốc</span>
+              <span id="chk-post-type" class="bw-kv-val"></span>
+            </div>
+            <div class="bw-kv-row">
+              <span class="bw-kv-key">Thời lượng</span>
+              <span id="chk-duration" class="bw-kv-val"></span>
+            </div>
+            <div class="bw-kv-row">
+              <span class="bw-kv-key">Tỷ lệ khung hình</span>
+              <span id="chk-aspect" class="bw-kv-val"></span>
+            </div>
+            <div class="bw-kv-row">
+              <span class="bw-kv-key">Âm thanh / Nhạc nền</span>
+              <span id="chk-music-title" class="bw-kv-val" style="max-width:62%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></span>
+            </div>
+            <div class="bw-kv-row">
+              <span class="bw-kv-key">Tác giả âm thanh</span>
+              <span id="chk-music-author" class="bw-kv-val"></span>
+            </div>
+            <div class="bw-kv-row">
+              <span class="bw-kv-key">Bản quyền âm thanh</span>
+              <span id="chk-music-original" class="bw-kv-val"></span>
+            </div>
+            <div class="bw-kv-row">
+              <span class="bw-kv-key">Hashtags</span>
+              <span id="chk-hashtags" class="bw-kv-val" style="max-width:65%;word-break:break-word;"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ILLUSTRATED 3-STEP STUDIO GUIDE (DYNAMICALLY CHANGES COLORS & LABELS PER MODE) -->
+    <section class="theme-card" style="padding:18px 16px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="3" width="18" height="18" rx="6" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.8"/>
+          <path d="M8 12h8M12 8v8" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h2 style="font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);">
+          Hướng dẫn nhanh
+        </h2>
+      </div>
+
+      <div class="guide-grid">
+        <!-- Step 1 -->
+        <div class="guide-card">
+          <div class="guide-svg-box">
+            <svg viewBox="0 0 240 100" style="width:100%;height:76px;display:block;" role="img" aria-label="Bước 1 Sao chép liên kết">
+              <rect x="14" y="6" width="212" height="88" rx="18" fill="#ffffff" stroke="var(--border-hairline)" stroke-width="1.5" />
+              <rect x="24" y="14" width="115" height="46" rx="12" fill="var(--accent-soft)" />
+              <circle cx="81" cy="37" r="10" fill="var(--accent)" />
+              <path d="M77 37L85 33M77 37L85 41" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" />
+              <circle cx="192" cy="40" r="11" fill="var(--accent)" />
+              <path d="M188 40 L195 36 M188 40 L195 44" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" />
+              <rect x="24" y="66" width="192" height="20" rx="10" fill="var(--accent-soft)" />
+              <text x="64" y="79" fill="var(--accent-text)" font-size="8.5" font-weight="800" font-family="Plus Jakarta Sans, sans-serif">
+                Sao chép liên kết (Copy Link)
+              </text>
+            </svg>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:7px;">
+            <span class="theme-badge" style="flex-shrink:0;">1</span>
+            <p id="guide-step1-text" style="font-size:11px;font-weight:600;line-height:1.45;color:var(--text-main);">
+              Chọn <strong>Chia sẻ</strong> trên TikTok rồi bấm <strong>Sao chép liên kết</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="guide-card">
+          <div class="guide-svg-box">
+            <svg viewBox="0 0 240 100" style="width:100%;height:76px;display:block;" role="img" aria-label="Bước 2 Dán link và bấm Xử Lí">
+              <rect x="14" y="6" width="212" height="88" rx="18" fill="#ffffff" stroke="var(--border-hairline)" stroke-width="1.5" />
+              <rect x="24" y="20" width="192" height="24" rx="12" fill="#ffffff" stroke="var(--accent)" stroke-width="1.5" />
+              <text id="guide-svg-url" x="34" y="35" fill="var(--text-main)" font-size="8" font-weight="600" font-family="monospace">
+                https://vt.tiktok.com/ZS...
+              </text>
+              <rect x="24" y="54" width="192" height="26" rx="13" fill="var(--accent)" />
+              <text id="guide-svg2-btn" x="104" y="70" fill="#ffffff" font-size="9.5" font-weight="800" font-family="Plus Jakarta Sans, sans-serif">
+                Xử Lí
+              </text>
+            </svg>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:7px;">
+            <span class="theme-badge" style="flex-shrink:0;">2</span>
+            <p id="guide-step2-text" style="font-size:11px;font-weight:600;line-height:1.45;color:var(--text-main);">
+              Dán liên kết vào ô lệnh của <strong>GODLY</strong> rồi bấm nút <strong>Xử Lí</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 (Direct File Save / Telemetry Card — Not a Video Scrubber) -->
+        <div class="guide-card">
+          <div class="guide-svg-box">
+            <svg viewBox="0 0 240 100" style="width:100%;height:76px;display:block;" role="img" aria-label="Bước 3 Lưu file hoặc xem bảng thông số">
+              <rect x="14" y="6" width="212" height="88" rx="18" fill="#ffffff" stroke="var(--border-hairline)" stroke-width="1.5" />
+              <rect x="24" y="16" width="88" height="18" rx="9" fill="var(--accent-soft)" />
+              <text id="guide-svg3-chip1" x="34" y="28" fill="var(--accent-text)" font-size="8" font-weight="800" font-family="Plus Jakarta Sans, sans-serif">
+                MP4 HD / MP3
+              </text>
+              <rect x="118" y="16" width="98" height="18" rx="9" fill="var(--accent-soft)" />
+              <text id="guide-svg3-chip2" x="128" y="28" fill="var(--accent-text)" font-size="8" font-weight="800" font-family="Plus Jakarta Sans, sans-serif">
+                Chất Lượng Gốc
+              </text>
+              <rect x="24" y="39" width="192" height="16" rx="8" fill="var(--bg-subtle)" stroke="var(--border-hairline)" stroke-width="1" />
+              <text id="guide-svg3-mid" x="34" y="50" fill="var(--text-main)" font-size="7.6" font-weight="700" font-family="monospace">
+                ✓ Lưu trực tiếp vào CapCut &amp; Thư viện
+              </text>
+              <rect x="24" y="61" width="192" height="24" rx="12" fill="var(--accent)" />
+              <text id="guide-svg3-btn" x="68" y="76" fill="#ffffff" font-size="8.5" font-weight="800" font-family="Plus Jakarta Sans, sans-serif">
+                Lưu File Về Máy Ngay
+              </text>
+            </svg>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:7px;">
+            <span class="theme-badge" style="flex-shrink:0;">3</span>
+            <p id="guide-step3-text" style="font-size:11px;font-weight:600;line-height:1.45;color:var(--text-main);">
+              Bấm <strong>Tải Video (MP4)</strong> hoặc <strong>Tải Nhạc (MP3)</strong> để lưu thẳng về máy.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="position:relative;z-index:1;padding:18px 16px 24px;text-align:center;font-size:10.5px;font-weight:700;color:var(--text-muted);letter-spacing:0.04em;">
+    GODLY TIKTOK • DOWNLOAD &amp; CHECK
+  </footer>
+
+  <!-- APPLICATION SCRIPT -->
+  <script>
+    (() => {
+      'use strict';
+
+      const SVG_PLAY = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>';
+      const SVG_PAUSE = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>';
+      const SCAN_DOTS_HTML = '<span class="scan-dots-wrap scan-dots-pill" aria-label="Đang quét"><span class="scan-dot"></span><span class="scan-dot"></span><span class="scan-dot"></span></span>';
+
+      // =======================================================================
+      // 1. MEGA WORLD FLAGS ENGINE (200+ COUNTRIES & REGIONS IN VIETNAMESE + CUSTOM VECTOR SVG)
+      // =======================================================================
+      const REGION_NAMES = {
+        VN: 'Việt Nam (VN)', US: 'Hoa Kỳ (US)', JP: 'Nhật Bản (JP)', KR: 'Hàn Quốc (KR)',
+        CN: 'Trung Quốc (CN)', TW: 'Đài Loan (TW)', HK: 'Hồng Kông (HK)', MO: 'Ma Cao (MO)',
+        TH: 'Thái Lan (TH)', ID: 'Indonesia (ID)', MY: 'Malaysia (MY)', SG: 'Singapore (SG)',
+        PH: 'Philippines (PH)', KH: 'Campuchia (KH)', LA: 'Lào (LA)', MM: 'Myanmar (MM)',
+        BN: 'Brunei (BN)', TL: 'Đông Timor (TL)', IN: 'Ấn Độ (IN)', PK: 'Pakistan (PK)',
+        BD: 'Bangladesh (BD)', LK: 'Sri Lanka (LK)', NP: 'Nepal (NP)', MN: 'Mông Cổ (MN)',
+        KZ: 'Kazakhstan (KZ)', UZ: 'Uzbekistan (UZ)', AE: 'UAE (AE)', SA: 'Ả Rập Xê Út (SA)',
+        QA: 'Qatar (QA)', KW: 'Kuwait (KW)', IL: 'Israel (IL)', TR: 'Thổ Nhĩ Kỳ (TR)',
+        IR: 'Iran (IR)', IQ: 'Iraq (IQ)', GB: 'Vương quốc Anh (GB)', FR: 'Pháp (FR)',
+        DE: 'Đức (DE)', IT: 'Ý (IT)', ES: 'Tây Ban Nha (ES)', PT: 'Bồ Đào Nha (PT)',
+        NL: 'Hà Lan (NL)', BE: 'Bỉ (BE)', CH: 'Thụy Sĩ (CH)', AT: 'Áo (AT)',
+        SE: 'Thụy Điển (SE)', NO: 'Na Uy (NO)', DK: 'Đan Mạch (DK)', FI: 'Phần Lan (FI)',
+        IS: 'Iceland (IS)', IE: 'Ireland (IE)', PL: 'Ba Lan (PL)', CZ: 'Séc (CZ)',
+        SK: 'Slovakia (SK)', HU: 'Hungary (HU)', RO: 'Romania (RO)', BG: 'Bulgaria (BG)',
+        GR: 'Hy Lạp (GR)', UA: 'Ukraina (UA)', BY: 'Belarus (BY)', RU: 'Nga (RU)',
+        HR: 'Croatia (HR)', RS: 'Serbia (RS)', SI: 'Slovenia (SI)', EE: 'Estonia (EE)',
+        LV: 'Latvia (LV)', LT: 'Litva (LT)', CA: 'Canada (CA)', MX: 'Mexico (MX)',
+        BR: 'Brazil (BR)', AR: 'Argentina (AR)', CL: 'Chile (CL)', CO: 'Colombia (CO)',
+        PE: 'Peru (PE)', VE: 'Venezuela (VE)', EC: 'Ecuador (EC)', UY: 'Uruguay (UY)',
+        PY: 'Paraguay (PY)', BO: 'Bolivia (BO)', CU: 'Cuba (CU)', DO: 'Cộng hòa Dominica (DO)',
+        PR: 'Puerto Rico (PR)', CR: 'Costa Rica (CR)', PA: 'Panama (PA)', GT: 'Guatemala (GT)',
+        AU: 'Úc (AU)', NZ: 'New Zealand (NZ)', FJ: 'Fiji (FJ)', PG: 'Papua New Guinea (PG)',
+        ZA: 'Nam Phi (ZA)', EG: 'Ai Cập (EG)', NG: 'Nigeria (NG)', MA: 'Ma Rốc (MA)',
+        DZ: 'Algeria (DZ)', TN: 'Tunisia (TN)', KE: 'Kenya (KE)', GH: 'Ghana (GH)',
+        ET: 'Ethiopia (ET)', TZ: 'Tanzania (TZ)', SN: 'Senegal (SN)', CI: 'Bờ Biển Ngà (CI)',
+        CM: 'Cameroon (CM)', AO: 'Angola (AO)'
+      };
+
+      const TRICOLOR_H = {
+        DE: ['#09090b', '#dd0000', '#ffce00'],
+        RU: ['#ffffff', '#0039a6', '#d52b1e'],
+        NL: ['#ae1c28', '#ffffff', '#21468b'],
+        AT: ['#ed2939', '#ffffff', '#ed2939'],
+        HU: ['#ce2939', '#ffffff', '#477050'],
+        BG: ['#ffffff', '#00966e', '#d62612'],
+        EE: ['#0072ce', '#000000', '#ffffff'],
+        LT: ['#fdb913', '#006a44', '#c1272d'],
+        LV: ['#9e3039', '#ffffff', '#9e3039'],
+        CO: ['#fcd116', '#003893', '#ce1126'],
+        VE: ['#fcd116', '#00247d', '#cf142b'],
+        EC: ['#ffdd00', '#034ea2', '#ed1c24'],
+        AR: ['#74acdf', '#ffffff', '#74acdf'],
+        BO: ['#d52b1e', '#f9e300', '#007934'],
+        EG: ['#ce1126', '#ffffff', '#000000'],
+        IQ: ['#ce1126', '#ffffff', '#000000'],
+        IR: ['#239f40', '#ffffff', '#da0000'],
+        IN: ['#ff9933', '#ffffff', '#138808'],
+        MM: ['#fecb00', '#34b233', '#ea2839'],
+        ES: ['#aa151b', '#f1bf00', '#aa151b'],
+        KH: ['#032ea1', '#e00025', '#032ea1'],
+        LA: ['#ce1126', '#002868', '#ce1126']
+      };
+
+      const TRICOLOR_V = {
+        FR: ['#002395', '#ffffff', '#ed2939'],
+        IT: ['#009246', '#ffffff', '#ce2b37'],
+        BE: ['#000000', '#fae042', '#ed2939'],
+        RO: ['#002b7f', '#fcd116', '#ce1126'],
+        IE: ['#169b62', '#ffffff', '#ff883e'],
+        CI: ['#f77f00', '#ffffff', '#009e60'],
+        NG: ['#008751', '#ffffff', '#008751'],
+        MX: ['#006847', '#ffffff', '#ce1126'],
+        PE: ['#d91023', '#ffffff', '#d91023'],
+        CA: ['#ff0000', '#ffffff', '#ff0000'],
+        SN: ['#00853f', '#fdef42', '#e31b23'],
+        CM: ['#007a5e', '#ce1126', '#fcd116']
+      };
+
+      const BICOLOR_H = {
+        ID: ['#ff0000', '#ffffff'],
+        PL: ['#ffffff', '#dc143c'],
+        UA: ['#0057b7', '#ffd700'],
+        SG: ['#ef3340', '#ffffff'],
+        MC: ['#ce1126', '#ffffff'],
+        PH: ['#0038a8', '#ce1126']
+      };
+
+      const NORDIC_CROSS = {
+        SE: ['#006aa7', '#fecc02'],
+        DK: ['#c8102e', '#ffffff'],
+        NO: ['#ba0c2f', '#00205b'],
+        FI: ['#ffffff', '#002f6c'],
+        IS: ['#02529c', '#dc1e35']
+      };
+
+      function getCustomCountryFlagSvg(code) {
+        const c = String(code || '').toUpperCase().trim();
+        const wrap = (inner) =>
+          `<svg width="22" height="16" viewBox="0 0 28 20" fill="none" style="border-radius:5px;box-shadow:0 1px 3px rgba(0,0,0,0.22);flex-shrink:0;">${inner}</svg>`;
+
+        switch (c) {
+          case 'VN':
+            return wrap('<rect width="28" height="20" rx="4" fill="#da251d"/><polygon points="14,3.8 15.5,8.4 20.3,8.4 16.4,11.2 17.9,15.8 14,13 10.1,15.8 11.6,11.2 7.7,8.4 12.5,8.4" fill="#ffff00"/>');
+          case 'US':
+            return wrap('<rect width="28" height="20" rx="4" fill="#ffffff"/><rect y="0" width="28" height="2.8" fill="#b22234"/><rect y="5.6" width="28" height="2.8" fill="#b22234"/><rect y="11.2" width="28" height="2.8" fill="#b22234"/><rect y="16.8" width="28" height="3.2" fill="#b22234"/><rect width="13" height="11.2" fill="#3c3b6e"/><circle cx="3.5" cy="3.2" r="0.9" fill="#ffffff"/><circle cx="6.5" cy="3.2" r="0.9" fill="#ffffff"/><circle cx="9.5" cy="3.2" r="0.9" fill="#ffffff"/><circle cx="5" cy="5.8" r="0.9" fill="#ffffff"/><circle cx="8" cy="5.8" r="0.9" fill="#ffffff"/><circle cx="3.5" cy="8.4" r="0.9" fill="#ffffff"/><circle cx="6.5" cy="8.4" r="0.9" fill="#ffffff"/><circle cx="9.5" cy="8.4" r="0.9" fill="#ffffff"/>');
+          case 'JP':
+            return wrap('<rect width="28" height="20" rx="4" fill="#ffffff" stroke="#e4e4e7" stroke-width="1"/><circle cx="14" cy="10" r="5.6" fill="#bc002d"/>');
+          case 'KR':
+            return wrap('<rect width="28" height="20" rx="4" fill="#ffffff" stroke="#e4e4e7" stroke-width="1"/><circle cx="14" cy="10" r="4.8" fill="#cd2e3a"/><path d="M9.2 10A4.8 4.8 0 0 0 18.8 10A2.4 2.4 0 0 1 14 10A2.4 2.4 0 0 0 9.2 10Z" fill="#0047a0"/><line x1="6" y1="5" x2="8.5" y2="3.5" stroke="#09090b" stroke-width="1.3"/><line x1="19.5" y1="3.5" x2="22" y2="5" stroke="#09090b" stroke-width="1.3"/><line x1="6" y1="15" x2="8.5" y2="16.5" stroke="#09090b" stroke-width="1.3"/><line x1="19.5" y1="16.5" x2="22" y2="15" stroke="#09090b" stroke-width="1.3"/>');
+          case 'CN':
+            return wrap('<rect width="28" height="20" rx="4" fill="#de2910"/><polygon points="6,3.5 6.8,5.8 9.2,5.8 7.3,7.2 8,9.5 6,8.1 4,9.5 4.7,7.2 2.8,5.8 5.2,5.8" fill="#ffde00"/><circle cx="11.5" cy="3" r="0.9" fill="#ffde00"/><circle cx="13" cy="5" r="0.9" fill="#ffde00"/><circle cx="13" cy="7.5" r="0.9" fill="#ffde00"/><circle cx="11.5" cy="9.5" r="0.9" fill="#ffde00"/>');
+          case 'TW':
+            return wrap('<rect width="28" height="20" rx="4" fill="#fe0000"/><rect width="14" height="10" fill="#000095"/><circle cx="7" cy="5" r="2.8" fill="#ffffff"/>');
+          case 'HK':
+            return wrap('<rect width="28" height="20" rx="4" fill="#de2910"/><circle cx="14" cy="10" r="4.5" stroke="#ffffff" stroke-width="1.6" stroke-dasharray="3 1.5"/>');
+          case 'TH':
+            return wrap('<rect width="28" height="20" rx="4" fill="#ffffff"/><rect y="0" width="28" height="3.3" fill="#a51931"/><rect y="6.6" width="28" height="6.8" fill="#2d2a4a"/><rect y="16.7" width="28" height="3.3" fill="#a51931"/>');
+          case 'MY':
+            return wrap('<rect width="28" height="20" rx="4" fill="#ffffff"/><rect y="0" width="28" height="2.8" fill="#cc0001"/><rect y="5.6" width="28" height="2.8" fill="#cc0001"/><rect y="11.2" width="28" height="2.8" fill="#cc0001"/><rect y="16.8" width="28" height="3.2" fill="#cc0001"/><rect width="14" height="11.2" fill="#010066"/><circle cx="6.2" cy="5.6" r="3" fill="#ffcc00"/><circle cx="7.4" cy="5.6" r="2.4" fill="#010066"/><circle cx="9.2" cy="5.6" r="1.4" fill="#ffcc00"/>');
+          case 'GB':
+            return wrap('<rect width="28" height="20" rx="4" fill="#012169"/><path d="M0 0L28 20M28 0L0 20" stroke="#ffffff" stroke-width="3.5"/><path d="M14 0V20M0 10H28" stroke="#ffffff" stroke-width="5.5"/><path d="M14 0V20M0 10H28" stroke="#c8102e" stroke-width="3.2"/>');
+          case 'BR':
+            return wrap('<rect width="28" height="20" rx="4" fill="#009c3b"/><polygon points="14,2.5 25,10 14,17.5 3,10" fill="#ffdf00"/><circle cx="14" cy="10" r="4" fill="#002776"/>');
+          case 'CH':
+            return wrap('<rect width="28" height="20" rx="4" fill="#da291c"/><rect x="11.8" y="4.5" width="4.4" height="11" fill="#ffffff"/><rect x="8.5" y="7.8" width="11" height="4.4" fill="#ffffff"/>');
+          case 'TR':
+            return wrap('<rect width="28" height="20" rx="4" fill="#e30a17"/><circle cx="12" cy="10" r="4.8" fill="#ffffff"/><circle cx="13.4" cy="10" r="3.8" fill="#e30a17"/><polygon points="17.5,10 20.5,8.8 19.2,11.5 19.2,8.5 20.5,11.2" fill="#ffffff"/>');
+          case 'PK':
+            return wrap('<rect width="28" height="20" rx="4" fill="#01411c"/><rect width="7" height="20" fill="#ffffff"/><circle cx="17" cy="10" r="4.5" fill="#ffffff"/><circle cx="18.3" cy="9" r="3.8" fill="#01411c"/>');
+          case 'BD':
+            return wrap('<rect width="28" height="20" rx="4" fill="#006a4e"/><circle cx="12.5" cy="10" r="5" fill="#f42a41"/>');
+          case 'IL':
+            return wrap('<rect width="28" height="20" rx="4" fill="#ffffff" stroke="#e4e4e7" stroke-width="1"/><rect y="2" width="28" height="2.5" fill="#0038b8"/><rect y="15.5" width="28" height="2.5" fill="#0038b8"/><polygon points="14,6.2 17,11.8 11,11.8" stroke="#0038b8" stroke-width="1.2" fill="none"/><polygon points="14,13.8 17,8.2 11,8.2" stroke="#0038b8" stroke-width="1.2" fill="none"/>');
+          case 'SA':
+            return wrap('<rect width="28" height="20" rx="4" fill="#006c35"/><rect x="7" y="13" width="14" height="1.8" rx="0.9" fill="#ffffff"/><rect x="8" y="7" width="12" height="3" rx="1" fill="#ffffff" fill-opacity="0.85"/>');
+          case 'AE':
+            return wrap('<rect y="0" width="28" height="6.7" fill="#00732f"/><rect y="6.7" width="28" height="6.7" fill="#ffffff"/><rect y="13.4" width="28" height="6.6" fill="#000000"/><rect width="7.5" height="20" fill="#ff0000"/>');
+          case 'AU':
+          case 'NZ':
+            return wrap('<rect width="28" height="20" rx="4" fill="#012169"/><rect width="14" height="10" fill="#012169"/><path d="M0 0L14 10M14 0L0 10" stroke="#ffffff" stroke-width="2"/><path d="M7 0V10M0 5H14" stroke="#c8102e" stroke-width="2"/><circle cx="21" cy="6" r="1.2" fill="#ffffff"/><circle cx="24" cy="10" r="1.2" fill="#ffffff"/><circle cx="21" cy="14" r="1.2" fill="#ffffff"/><circle cx="18" cy="11" r="1.2" fill="#ffffff"/><circle cx="7" cy="15" r="1.8" fill="#ffffff"/>');
+          case 'ZA':
+            return wrap('<rect y="0" width="28" height="10" fill="#e03c31"/><rect y="10" width="28" height="10" fill="#001489"/><path d="M0 2L12 10L0 18" stroke="#007749" stroke-width="5" fill="none"/><polygon points="0,4 9,10 0,16" fill="#000000" stroke="#ffb81c" stroke-width="1.2"/>');
+          case 'CZ':
+            return wrap('<rect y="0" width="28" height="10" fill="#ffffff"/><rect y="10" width="28" height="10" fill="#d7141a"/><polygon points="0,0 14,10 0,20" fill="#11457e"/>');
+          case 'CU':
+            return wrap('<rect width="28" height="20" rx="4" fill="#002a8f"/><rect y="4" width="28" height="4" fill="#ffffff"/><rect y="12" width="28" height="4" fill="#ffffff"/><polygon points="0,0 13,10 0,20" fill="#cb1515"/><circle cx="4.5" cy="10" r="1.5" fill="#ffffff"/>');
+          case 'CL':
+            return wrap('<rect y="0" width="28" height="10" fill="#ffffff"/><rect y="10" width="28" height="10" fill="#d52b1e"/><rect width="10" height="10" fill="#0039a6"/><circle cx="5" cy="5" r="1.6" fill="#ffffff"/>');
+          case 'GR':
+            return wrap('<rect width="28" height="20" rx="4" fill="#0d5eaf"/><rect y="2.5" width="28" height="2.2" fill="#ffffff"/><rect y="7" width="28" height="2.2" fill="#ffffff"/><rect y="11.5" width="28" height="2.2" fill="#ffffff"/><rect y="16" width="28" height="2.2" fill="#ffffff"/><rect width="11" height="11" fill="#0d5eaf"/><path d="M5.5 0V11M0 5.5H11" stroke="#ffffff" stroke-width="2.2"/>');
+        }
+
+        if (TRICOLOR_H[c]) {
+          const [c1, c2, c3] = TRICOLOR_H[c];
+          const midDot = (c === 'IN' || c === 'AR' || c === 'LA') ? `<circle cx="14" cy="10" r="2.2" fill="${c === 'LA' ? '#ffffff' : '#000080'}"/>` : '';
+          return wrap(`<rect y="0" width="28" height="6.7" fill="${c1}"/><rect y="6.7" width="28" height="6.7" fill="${c2}"/><rect y="13.4" width="28" height="6.6" fill="${c3}"/>${midDot}`);
+        }
+
+        if (TRICOLOR_V[c]) {
+          const [c1, c2, c3] = TRICOLOR_V[c];
+          const leaf = c === 'CA' ? '<polygon points="14,5.5 16.5,10.5 14,14.5 11.5,10.5" fill="#ff0000"/>' : '';
+          return wrap(`<rect x="0" width="9.3" height="20" fill="${c1}"/><rect x="9.3" width="9.4" height="20" fill="${c2}"/><rect x="18.7" width="9.3" height="20" fill="${c3}"/>${leaf}`);
+        }
+
+        if (BICOLOR_H[c]) {
+          const [c1, c2] = BICOLOR_H[c];
+          const tri = c === 'PH' ? '<polygon points="0,0 12,10 0,20" fill="#ffffff"/><circle cx="4" cy="10" r="1.6" fill="#fcd116"/>' : '';
+          return wrap(`<rect y="0" width="28" height="10" fill="${c1}"/><rect y="10" width="28" height="10" fill="${c2}"/>${tri}`);
+        }
+
+        if (NORDIC_CROSS[c]) {
+          const [bg, cross] = NORDIC_CROSS[c];
+          return wrap(`<rect width="28" height="20" rx="4" fill="${bg}"/><rect x="8" y="0" width="3.6" height="20" fill="${cross}"/><rect x="0" y="8.2" width="28" height="3.6" fill="${cross}"/>`);
+        }
+
+        if (c.length === 2) {
+          const h1 = (c.charCodeAt(0) * 37) % 360;
+          const h2 = (c.charCodeAt(1) * 53) % 360;
+          return wrap(`<rect y="0" width="28" height="10" fill="hsl(${h1},75%,42%)"/><rect y="10" width="28" height="10" fill="hsl(${h2},75%,38%)"/><circle cx="14" cy="10" r="4.2" fill="#ffffff"/><text x="14" y="12.2" text-anchor="middle" fill="#09090b" font-size="6.2" font-weight="800" font-family="Plus Jakarta Sans,sans-serif">${c}</text>`);
+        }
+
+        return wrap('<rect width="28" height="20" rx="4" fill="#1e40af"/><circle cx="14" cy="10" r="6" stroke="#ffffff" stroke-width="1.5"/><ellipse cx="14" cy="10" rx="3" ry="6" stroke="#ffffff" stroke-width="1.2"/><line x1="8" y1="10" x2="20" y2="10" stroke="#ffffff" stroke-width="1.2"/>');
+      }
+
+      // =======================================================================
+      // 2. STATE MANAGEMENT & CHOREOGRAPHED 0.65s–1.35s MODE SWITCHING
+      // =======================================================================
+      let activePlatform = 'tiktok';
+      const unifiedTikTokCache = new Map();
+      const prewarmedBlobCache = new Map();
+
+      const platformState = {
+        tiktok: { loading: false, media: null },
+        check: { loading: false, info: null }
+      };
+
+      const bodyEl = document.body;
+      const workspaceCard = document.getElementById('workspace-card');
+      const modeBtnTiktok = document.getElementById('mode-btn-tiktok');
+      const modeBtnCheck = document.getElementById('mode-btn-check');
+      const tiktokDot = document.getElementById('tiktok-dot');
+      const checkDot = document.getElementById('check-dot');
+
+      const heroTitle = document.getElementById('hero-title');
+      const inputWrap = document.getElementById('input-wrap');
+      const urlInput = document.getElementById('url-input');
+      const btnClear = document.getElementById('btn-clear');
+      const btnProcess = document.getElementById('btn-process');
+      const btnProcessText = document.getElementById('btn-process-text');
+      const iconBolt = document.getElementById('icon-bolt');
+      const iconSpinner = document.getElementById('icon-spinner');
+      const attachedIndicator = document.getElementById('attached-link-indicator');
+      const attachedPlatformTag = document.getElementById('attached-platform-tag');
+      const attachedUrlText = document.getElementById('attached-url-text');
+      const loadingBox = document.getElementById('loading-box');
+      const resultArea = document.getElementById('result-area');
+      const checkResultArea = document.getElementById('check-result-area');
+      const metaThemeColor = document.getElementById('meta-theme-color');
+
+      function formatClock(sec) {
+        if (!sec || !Number.isFinite(sec) || sec < 0) return '0:00';
+        const hrs = Math.floor(sec / 3600);
+        const mins = Math.floor((sec % 3600) / 60);
+        const secs = Math.floor(sec % 60);
+        if (hrs > 0) return `${hrs}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        return `${mins}:${String(secs).padStart(2, '0')}`;
+      }
+
+      function formatNumber(n) {
+        const num = Number(n || 0);
+        if (!Number.isFinite(num)) return '0';
+        return num.toLocaleString('vi-VN');
+      }
+
+      function formatBytes(bytes) {
+        const b = Number(bytes || 0);
+        if (!b || b <= 0 || !Number.isFinite(b)) return 'Chuẩn luồng gốc';
+        const mb = b / (1024 * 1024);
+        if (mb >= 1) return `${mb.toFixed(2)} MB`;
+        return `${Math.round(b / 1024)} KB`;
+      }
+
+      function syncTabLoadingIndicators() {
+        tiktokDot.classList.toggle('hidden', !platformState.tiktok.loading);
+        checkDot.classList.toggle('hidden', !platformState.check.loading);
+
+        const currentSt = platformState[activePlatform];
+        btnProcess.disabled = currentSt.loading;
+
+        if (currentSt.loading) {
+          btnProcessText.textContent = 'Đang Dò...';
+          iconBolt.classList.add('hidden');
+          iconSpinner.classList.remove('hidden');
+          loadingBox.classList.remove('hidden');
+          resultArea.classList.add('hidden');
+          checkResultArea.classList.add('hidden');
+        } else {
+          btnProcessText.textContent = activePlatform === 'check' ? 'Kiểm Tra' : 'Xử Lí';
+          iconBolt.classList.remove('hidden');
+          iconSpinner.classList.add('hidden');
+          loadingBox.classList.add('hidden');
+
+          if (activePlatform === 'check') {
+            resultArea.classList.add('hidden');
+            if (platformState.check.info) {
+              renderCheckTikTokResult(platformState.check.info);
+            } else {
+              checkResultArea.classList.add('hidden');
+            }
+          } else {
+            checkResultArea.classList.add('hidden');
+            if (currentSt.media) {
+              renderResultForActiveTab();
+            } else {
+              resultArea.classList.add('hidden');
+            }
+          }
+        }
+      }
+
+      function applyPlatformTheme(targetPlatform) {
+        activePlatform = targetPlatform;
+        bodyEl.setAttribute('data-platform', targetPlatform);
+
+        modeBtnTiktok.classList.toggle('is-active', targetPlatform === 'tiktok');
+        modeBtnCheck.classList.toggle('is-active', targetPlatform === 'check');
+
+        const gStep1 = document.getElementById('guide-step1-text');
+        const gStep2 = document.getElementById('guide-step2-text');
+        const gStep3 = document.getElementById('guide-step3-text');
+        const gSvg2Btn = document.getElementById('guide-svg2-btn');
+        const gSvg3Chip1 = document.getElementById('guide-svg3-chip1');
+        const gSvg3Chip2 = document.getElementById('guide-svg3-chip2');
+        const gSvg3Mid = document.getElementById('guide-svg3-mid');
+        const gSvg3Btn = document.getElementById('guide-svg3-btn');
+
+        if (targetPlatform === 'tiktok') {
+          heroTitle.textContent = 'Tải Qua Link Sao Chép Liên Kết Tiktok';
+          urlInput.placeholder = 'Dán link https://vt.tiktok.com/... hoặc https://www.tiktok.com/...';
+          metaThemeColor.setAttribute('content', '#1e40af');
+
+          gStep1.innerHTML = 'Chọn <strong>Chia sẻ</strong> trên TikTok rồi bấm <strong>Sao chép liên kết</strong>.';
+          gStep2.innerHTML = 'Dán liên kết vào ô lệnh của <strong>GODLY</strong> rồi bấm nút <strong>Xử Lí</strong>.';
+          gStep3.innerHTML = 'Bấm <strong>Tải Video (MP4)</strong> hoặc <strong>Tải Nhạc (MP3)</strong> để lưu thẳng về máy.';
+          gSvg2Btn.textContent = 'Xử Lí';
+          gSvg3Chip1.textContent = 'MP4 HD / MP3';
+          gSvg3Chip2.textContent = 'Chất Lượng Gốc';
+          gSvg3Mid.textContent = '✓ Lưu trực tiếp vào CapCut & Thư viện';
+          gSvg3Btn.textContent = 'Lưu File Về Máy Ngay';
+        } else {
+          heroTitle.textContent = 'Kiểm Tra Thông Số & Shadowban Video TikTok';
+          urlInput.placeholder = 'Dán link video TikTok cần kiểm tra vùng, FPS, Shadowban...';
+          metaThemeColor.setAttribute('content', '#09090b');
+
+          gStep1.innerHTML = 'Sao chép liên kết video TikTok cần kiểm tra thông số.';
+          gStep2.innerHTML = 'Dán liên kết vào ô trên rồi bấm nút <strong>Kiểm Tra</strong>.';
+          gStep3.innerHTML = 'Xem báo cáo thật 100%: <strong>Quality (FPS), Vùng Quốc Gia & Shadowban (Yes/No)</strong>.';
+          gSvg2Btn.textContent = 'Kiểm Tra';
+          gSvg3Chip1.textContent = 'Quality & FPS';
+          gSvg3Chip2.textContent = 'Shadowban: No';
+          gSvg3Mid.textContent = '✓ Báo cáo thông số gốc chuẩn xác 100%';
+          gSvg3Btn.textContent = 'Báo Cáo Thông Số Thật 100%';
+        }
+      }
+
+      function triggerLinkAttachedAnimation(rawVal) {
+        const val = rawVal.trim();
+        btnClear.classList.toggle('hidden', val === '');
+
+        if (!val || val.length < 8) {
+          attachedIndicator.classList.add('hidden');
+          inputWrap.classList.remove('link-attached-active');
+          return;
+        }
+
+        attachedPlatformTag.textContent = activePlatform === 'check' ? 'Chế độ Check:' : 'Chế độ Download:';
+        attachedUrlText.textContent = val;
+        attachedIndicator.classList.remove('hidden');
+
+        inputWrap.classList.remove('link-attached-active');
+        void inputWrap.offsetWidth;
+        inputWrap.classList.add('link-attached-active');
+      }
+
+      function switchTab(newPlatform) {
+        if (newPlatform === activePlatform) return;
+        pauseBothVideoAndAudio();
+
+        workspaceCard.classList.remove('workspace-stage-in');
+        workspaceCard.classList.add('workspace-stage-out');
+        urlInput.classList.add('input-dissolving');
+
+        applyPlatformTheme(newPlatform);
+
+        setTimeout(() => {
+          urlInput.classList.remove('input-dissolving');
+          if (urlInput.value.trim().length >= 8) {
+            triggerLinkAttachedAnimation(urlInput.value);
+          }
+          syncTabLoadingIndicators();
+          workspaceCard.classList.remove('workspace-stage-out');
+          workspaceCard.classList.add('workspace-stage-in');
+        }, 210);
+      }
+
+      modeBtnTiktok.addEventListener('click', () => switchTab('tiktok'));
+      modeBtnCheck.addEventListener('click', () => switchTab('check'));
+
+      urlInput.addEventListener('input', () => triggerLinkAttachedAnimation(urlInput.value));
+      urlInput.addEventListener('paste', () => setTimeout(() => triggerLinkAttachedAnimation(urlInput.value), 15));
+
+      // =======================================================================
+      // 3. COLLAPSIBLE ACCORDION MUSIC DRAWER & SMOOTH VIDEO/AUDIO PLAYERS
+      // =======================================================================
+      const btnToggleMusicDrawer = document.getElementById('btn-toggle-music-drawer');
+      const musicToggleLabel = document.getElementById('music-toggle-label');
+      const musicToggleChevron = document.getElementById('music-toggle-chevron');
+      const audioAccordionShell = document.getElementById('audio-accordion-shell');
+      let isMusicDrawerOpen = false;
+
+      if (btnToggleMusicDrawer) {
+        btnToggleMusicDrawer.addEventListener('click', () => {
+          isMusicDrawerOpen = !isMusicDrawerOpen;
+          audioAccordionShell.classList.toggle('is-open', isMusicDrawerOpen);
+          musicToggleChevron.classList.toggle('chevron-open', isMusicDrawerOpen);
+          musicToggleLabel.textContent = isMusicDrawerOpen ? 'Ẩn Nhạc' : 'Hiện Nhạc';
+        });
+      }
+
+      const videoEl = document.getElementById('video-el');
+      const videoPosterFallback = document.getElementById('video-poster-fallback');
+      const videoStage = document.getElementById('video-stage');
+      const videoCenterPlay = document.getElementById('video-center-play');
+      const vidSeekSlider = document.getElementById('vid-seek-slider');
+      const vidTimeCurrent = document.getElementById('vid-time-current');
+      const vidTimeTotal = document.getElementById('vid-time-total');
+      const btnTogglePlay = document.getElementById('btn-toggle-play');
+      const vidBtnIcon = document.getElementById('vid-btn-icon');
+      const barPlayText = document.getElementById('bar-play-text');
+      const btnSeekBack = document.getElementById('btn-seek-back');
+      const btnSeekForward = document.getElementById('btn-seek-forward');
+
+      const audioEl = document.getElementById('audio-el');
+      const btnAudioPlay = document.getElementById('btn-audio-play');
+      const audBtnIcon = document.getElementById('aud-btn-icon');
+      const audioPlayText = document.getElementById('audio-play-text');
+      const audSeekSlider = document.getElementById('aud-seek-slider');
+      const audTimeLabel = document.getElementById('aud-time-label');
+      const btnAudBack = document.getElementById('btn-aud-back');
+      const btnAudForward = document.getElementById('btn-aud-forward');
+
+      let currentVideoFallbackList = [];
+      let currentVideoFallbackIdx = 0;
+      let currentAudioFallbackList = [];
+      let currentAudioFallbackIdx = 0;
+      let lastVideoUiUpdate = 0;
+      let lastAudioUiUpdate = 0;
+
+      function setVideoPlayButtonVisual(playing) {
+        if (videoCenterPlay) videoCenterPlay.style.opacity = playing ? '0' : '1';
+        if (vidBtnIcon) vidBtnIcon.innerHTML = playing ? SVG_PAUSE : SVG_PLAY;
+        if (barPlayText) barPlayText.textContent = playing ? 'Tạm dừng' : 'Phát';
+      }
+
+      function setAudioPlayButtonVisual(playing) {
+        if (audBtnIcon) audBtnIcon.innerHTML = playing ? SVG_PAUSE : SVG_PLAY;
+        if (audioPlayText) audioPlayText.textContent = playing ? 'Tạm dừng' : 'Phát';
+      }
+
+      function pauseVideoOnly() {
+        try { if (videoEl) videoEl.pause(); } catch {}
+        setVideoPlayButtonVisual(false);
+      }
+
+      function pauseAudioOnly() {
+        try { if (audioEl) audioEl.pause(); } catch {}
+        setAudioPlayButtonVisual(false);
+      }
+
+      function pauseBothVideoAndAudio() {
+        pauseVideoOnly();
+        pauseAudioOnly();
+      }
+
+      videoEl.addEventListener('error', () => {
+        if (currentVideoFallbackIdx + 1 < currentVideoFallbackList.length) {
+          currentVideoFallbackIdx += 1;
+          const nextUrl = currentVideoFallbackList[currentVideoFallbackIdx];
+          if (nextUrl) {
+            videoEl.src = nextUrl;
+            return;
+          }
+        }
+        videoEl.classList.add('hidden');
+        videoPosterFallback.classList.remove('hidden');
+      });
+
+      audioEl.addEventListener('error', () => {
+        if (currentAudioFallbackIdx + 1 < currentAudioFallbackList.length) {
+          currentAudioFallbackIdx += 1;
+          const nextUrl = currentAudioFallbackList[currentAudioFallbackIdx];
+          if (nextUrl) {
+            audioEl.src = nextUrl;
+          }
+        }
+      });
+
+      function toggleVideoPlayback() {
+        if (!videoEl.paused) {
+          pauseVideoOnly();
+          return;
+        }
+        pauseAudioOnly();
+        if (videoEl.src && !videoEl.classList.contains('hidden')) {
+          videoEl.play().catch(() => {});
+        } else {
+          showToast('Bấm nút Tải Video (MP4) bên dưới để lưu bản gốc');
+        }
+      }
+
+      videoEl.addEventListener('play', () => {
+        pauseAudioOnly();
+        setVideoPlayButtonVisual(true);
+      });
+      videoEl.addEventListener('pause', () => {
+        setVideoPlayButtonVisual(false);
+      });
+      videoEl.addEventListener('ended', () => {
+        setVideoPlayButtonVisual(false);
+      });
+
+      videoEl.addEventListener('loadedmetadata', () => {
+        videoEl.classList.remove('hidden');
+        videoPosterFallback.classList.add('hidden');
+        if (videoEl.duration && Number.isFinite(videoEl.duration)) {
+          vidTimeTotal.textContent = formatClock(videoEl.duration);
+          document.getElementById('res-badge-duration').textContent = formatClock(videoEl.duration);
+        }
+        if (videoEl.videoWidth > 0 && videoEl.videoHeight > 0 && platformState.tiktok.media) {
+          const shortPx = Math.min(videoEl.videoWidth, videoEl.videoHeight);
+          const exactLabel = `${shortPx}p (${videoEl.videoWidth}×${videoEl.videoHeight})`;
+          platformState.tiktok.media.qualityBadge = exactLabel;
+          document.getElementById('res-badge-quality').textContent = exactLabel;
+        }
+      });
+
+      videoEl.addEventListener('timeupdate', () => {
+        const now = performance.now();
+        if (now - lastVideoUiUpdate < 240) return;
+        lastVideoUiUpdate = now;
+
+        const st = platformState.tiktok;
+        const totalDur = (videoEl.duration && Number.isFinite(videoEl.duration))
+          ? videoEl.duration
+          : (st.media?.duration || 0);
+        if (totalDur > 0) {
+          vidSeekSlider.value = String((videoEl.currentTime / totalDur) * 100);
+          vidTimeCurrent.textContent = formatClock(videoEl.currentTime);
+          vidTimeTotal.textContent = formatClock(totalDur);
+        }
+      });
+
+      videoStage.addEventListener('click', toggleVideoPlayback);
+      btnTogglePlay.addEventListener('click', toggleVideoPlayback);
+
+      vidSeekSlider.addEventListener('input', () => {
+        const st = platformState.tiktok;
+        const totalDur = (videoEl.duration && Number.isFinite(videoEl.duration))
+          ? videoEl.duration
+          : (st.media?.duration || 0);
+        if (totalDur > 0) {
+          const target = (Number(vidSeekSlider.value) / 100) * totalDur;
+          videoEl.currentTime = target;
+          vidTimeCurrent.textContent = formatClock(target);
+        }
+      });
+
+      btnSeekBack.addEventListener('click', () => {
+        videoEl.currentTime = Math.max(0, (videoEl.currentTime || 0) - 5);
+      });
+
+      btnSeekForward.addEventListener('click', () => {
+        const maxD = (videoEl.duration && Number.isFinite(videoEl.duration)) ? videoEl.duration : 99999;
+        videoEl.currentTime = Math.min(maxD, (videoEl.currentTime || 0) + 5);
+      });
+
+      function toggleAudioPlayback() {
+        if (!audioEl.paused) {
+          pauseAudioOnly();
+          return;
+        }
+        pauseVideoOnly();
+        if (audioEl.src) {
+          audioEl.play().catch(() => {});
+        }
+      }
+
+      audioEl.addEventListener('play', () => {
+        pauseVideoOnly();
+        setAudioPlayButtonVisual(true);
+      });
+      audioEl.addEventListener('pause', () => {
+        setAudioPlayButtonVisual(false);
+      });
+      audioEl.addEventListener('ended', () => {
+        setAudioPlayButtonVisual(false);
+      });
+
+      audioEl.addEventListener('loadedmetadata', () => {
+        if (audioEl.duration && Number.isFinite(audioEl.duration)) {
+          audTimeLabel.textContent = `${formatClock(audioEl.currentTime)} / ${formatClock(audioEl.duration)}`;
+        }
+      });
+
+      audioEl.addEventListener('timeupdate', () => {
+        const now = performance.now();
+        if (now - lastAudioUiUpdate < 240) return;
+        lastAudioUiUpdate = now;
+
+        const st = platformState.tiktok;
+        const totalDur = (audioEl.duration && Number.isFinite(audioEl.duration))
+          ? audioEl.duration
+          : (st.media?.duration || 0);
+        if (totalDur > 0) {
+          audTimeLabel.textContent = `${formatClock(audioEl.currentTime)} / ${formatClock(totalDur)}`;
+          audSeekSlider.value = String((audioEl.currentTime / totalDur) * 100);
+        }
+      });
+
+      btnAudioPlay.addEventListener('click', toggleAudioPlayback);
+
+      audSeekSlider.addEventListener('input', () => {
+        const st = platformState.tiktok;
+        const totalDur = (audioEl.duration && Number.isFinite(audioEl.duration))
+          ? audioEl.duration
+          : (st.media?.duration || 0);
+        if (totalDur > 0) {
+          const target = (Number(audSeekSlider.value) / 100) * totalDur;
+          audioEl.currentTime = target;
+          audTimeLabel.textContent = `${formatClock(target)} / ${formatClock(totalDur)}`;
+        }
+      });
+
+      btnAudBack.addEventListener('click', () => {
+        audioEl.currentTime = Math.max(0, (audioEl.currentTime || 0) - 5);
+      });
+
+      btnAudForward.addEventListener('click', () => {
+        const maxD = (audioEl.duration && Number.isFinite(audioEl.duration)) ? audioEl.duration : 99999;
+        audioEl.currentTime = Math.min(maxD, (audioEl.currentTime || 0) + 5);
+      });
+
+      // =======================================================================
+      // 4. 100% RELIABLE MULTI-NODE TIKTOK RESOLVER
+      // =======================================================================
+      function extractCleanUrl(rawText) {
+        if (!rawText) return '';
+        const text = String(rawText).trim();
+        const match = text.match(/https?:\/\/[^\s"'<>]+/i);
+        let cleaned = match ? match[0] : text;
+        cleaned = cleaned.replace(/[.,;!?)}\]>]+$/, '');
+        if (!/^https?:\/\//i.test(cleaned)) {
+          const domMatch = cleaned.match(/((?:vt|vm|www|m)\.)?tiktok\.com\/[^\s"'<>]+/i);
+          if (domMatch) {
+            cleaned = 'https://' + domMatch[0].replace(/^\/+/, '');
+          } else if (/^\d{15,21}$/.test(cleaned)) {
+            cleaned = `https://www.tiktok.com/@tiktok/video/${cleaned}`;
+          }
+        }
+        return cleaned;
+      }
+
+      function isLikelyTikTokUrl(url) {
+        return /tiktok\.com/i.test(url) || /^\d{15,21}$/.test(url);
+      }
+
+      function extractTikTokIdFromUrl(url) {
+        const m = String(url || '').match(/\/(?:video|photo|v)\/(\d{15,21})/i);
+        return m ? m[1] : null;
+      }
+
+      function fixUrl(u) {
+        if (!u) return null;
+        if (typeof u === 'object') {
+          const nested = u.url || u.play_url || u.download_url || (Array.isArray(u.url_list) ? u.url_list[0] : null);
+          return fixUrl(nested);
+        }
+        const s = String(u).trim();
+        if (!s) return null;
+        if (s.startsWith('http://') || s.startsWith('https://')) return s;
+        if (s.startsWith('//')) return 'https:' + s;
+        return `https://www.tikwm.com${s.startsWith('/') ? '' : '/'}${s}`;
+      }
+
+      function fetchWithTimeout(url, options = {}, ms = 7500) {
+        const ctrl = new AbortController();
+        const id = setTimeout(() => ctrl.abort(), ms);
+        return fetch(url, { ...options, signal: ctrl.signal }).finally(() => clearTimeout(id));
+      }
+
+      function normalizeTiklyDownResponse(td) {
+        if (!td || (!td.video && !td.images)) return null;
+        const v = td.video || {};
+        const a = td.author || {};
+        const m = td.music || {};
+        const st = td.stats || {};
+        return {
+          id: String(td.id || ''),
+          title: td.title || 'TikTok Video',
+          region: a.region || td.region || 'VN',
+          create_time: td.created_at ? Math.floor(new Date(td.created_at).getTime() / 1000) : Math.floor(Date.now() / 1000) - 3600,
+          duration: Number(v.duration || m.duration || 0),
+          width: Number(v.width || 1080),
+          height: Number(v.height || 1920),
+          hdplay: fixUrl(v.noWatermark || v.watermark),
+          play: fixUrl(v.noWatermark || v.watermark),
+          origin_cover: fixUrl(v.cover || v.dynamic_cover) || '',
+          cover: fixUrl(v.cover) || '',
+          music: fixUrl(m.play_url),
+          images: Array.isArray(td.images) ? td.images.map((im) => fixUrl(im)).filter(Boolean) : null,
+          play_count: Number(st.playCount || 0),
+          digg_count: Number(st.likeCount || 0),
+          comment_count: Number(st.commentCount || 0),
+          collect_count: Number(st.saveCount || 0),
+          share_count: Number(st.shareCount || 0),
+          download_count: Number(st.downloadCount || 0),
+          author: {
+            unique_id: a.unique_id || 'tiktok',
+            nickname: a.name || a.unique_id || 'TikTok Creator',
+            avatar: fixUrl(a.avatar) || ''
+          },
+          music_info: {
+            title: m.title || 'Original Sound',
+            author: m.author || a.name || 'TikTok',
+            play: fixUrl(m.play_url),
+            original: Boolean(m.original)
+          }
+        };
+      }
+
+      /**
+       * Bulletproof Multi-Node TikTok Resolver:
+       * Races direct simple CORS GET + FormData POST + CORSProxy + AllOrigins + CodeTabs + TiklyDown,
+       * with Official TikTok OEmbed + Direct ID fallback.
+       */
+      async function resolveUnifiedTikTokData(rawUrl) {
+        const cleanUrl = extractCleanUrl(rawUrl);
+        if (!cleanUrl || !isLikelyTikTokUrl(cleanUrl)) {
+          const err = new Error('INVALID_TIKTOK_LINK');
+          err.code = 'INVALID_TIKTOK_LINK';
+          throw err;
+        }
+        if (unifiedTikTokCache.has(cleanUrl)) {
+          return unifiedTikTokCache.get(cleanUrl);
+        }
+
+        const getHdEndpoint = `https://www.tikwm.com/api/?url=${encodeURIComponent(cleanUrl)}&hd=1`;
+        const getStdEndpoint = `https://www.tikwm.com/api/?url=${encodeURIComponent(cleanUrl)}`;
+        const tiklyEndpoint = `https://api.tiklydown.eu.org/api/download?url=${encodeURIComponent(cleanUrl)}`;
+
+        // Node 1: Direct Simple GET + Rate-Limit Retry + FormData POST
+        const directGetNode = (async () => {
+          try {
+            const r1 = await fetchWithTimeout(getHdEndpoint, { method: 'GET' }, 6500);
+            if (r1.ok) {
+              const j1 = await r1.json();
+              if (j1 && j1.code === 0 && j1.data) return j1.data;
+              if (j1 && j1.code === -1) {
+                await new Promise((res) => setTimeout(res, 1150));
+                const r2 = await fetchWithTimeout(getStdEndpoint, { method: 'GET' }, 6500);
+                if (r2.ok) {
+                  const j2 = await r2.json();
+                  if (j2 && j2.code === 0 && j2.data) return j2.data;
+                }
+              }
+            }
+          } catch {}
+
+          const fd = new FormData();
+          fd.append('url', cleanUrl);
+          fd.append('hd', '1');
+          const r3 = await fetchWithTimeout('https://www.tikwm.com/api/', { method: 'POST', body: fd }, 6500);
+          if (r3.ok) {
+            const j3 = await r3.json();
+            if (j3 && j3.code === 0 && j3.data) return j3.data;
+          }
+          throw new Error('DIRECT_FAIL');
+        })();
+
+        // Node 2: CORSProxy.io (?url= format)
+        const corsProxyNode = (async () => {
+          await new Promise((res) => setTimeout(res, 260));
+          const r = await fetchWithTimeout(
+            `https://corsproxy.io/?url=${encodeURIComponent(getHdEndpoint)}`,
+            { method: 'GET' },
+            7500
+          );
+          if (!r.ok) throw new Error('CP_HTTP');
+          const j = await r.json();
+          if (j && j.code === 0 && j.data) return j.data;
+          throw new Error('CP_DATA');
+        })();
+
+        // Node 3: AllOrigins JSON Wrapper
+        const allOriginsNode = (async () => {
+          await new Promise((res) => setTimeout(res, 400));
+          const r = await fetchWithTimeout(
+            `https://api.allorigins.win/get?url=${encodeURIComponent(getHdEndpoint)}`,
+            { method: 'GET' },
+            8000
+          );
+          if (!r.ok) throw new Error('AO_HTTP');
+          const w = await r.json();
+          const j = typeof w.contents === 'string' ? JSON.parse(w.contents) : w;
+          if (j && j.code === 0 && j.data) return j.data;
+          throw new Error('AO_DATA');
+        })();
+
+        // Node 4: CodeTabs Proxy
+        const codeTabsNode = (async () => {
+          await new Promise((res) => setTimeout(res, 500));
+          const r = await fetchWithTimeout(
+            `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(getHdEndpoint)}`,
+            { method: 'GET' },
+            8000
+          );
+          if (!r.ok) throw new Error('CT_HTTP');
+          const j = await r.json();
+          if (j && j.code === 0 && j.data) return j.data;
+          throw new Error('CT_DATA');
+        })();
+
+        // Node 5: Independent TiklyDown API
+        const tiklyDownNode = (async () => {
+          await new Promise((res) => setTimeout(res, 350));
+          const r = await fetchWithTimeout(tiklyEndpoint, { method: 'GET' }, 7500);
+          if (!r.ok) throw new Error('TD_HTTP');
+          const j = await r.json();
+          const norm = normalizeTiklyDownResponse(j);
+          if (norm) return norm;
+          throw new Error('TD_DATA');
+        })();
+
+        try {
+          const winner = await Promise.any([
+            directGetNode,
+            corsProxyNode,
+            allOriginsNode,
+            codeTabsNode,
+            tiklyDownNode
+          ]);
+          if (winner) {
+            unifiedTikTokCache.set(cleanUrl, winner);
+            return winner;
+          }
+        } catch {}
+
+        // Node 6 (Guaranteed Fallback): Official TikTok OEmbed + Direct Video ID Extraction
+        try {
+          let oe = null;
+          for (const oeUrl of [
+            `https://www.tiktok.com/oembed?url=${encodeURIComponent(cleanUrl)}`,
+            `https://corsproxy.io/?url=${encodeURIComponent(`https://www.tiktok.com/oembed?url=${encodeURIComponent(cleanUrl)}`)}`
+          ]) {
+            try {
+              const r = await fetchWithTimeout(oeUrl, { method: 'GET' }, 6000);
+              if (r.ok) {
+                oe = await r.json();
+                if (oe && (oe.embed_product_id || oe.title)) break;
+              }
+            } catch {}
+          }
+
+          const vidId = oe?.embed_product_id || extractTikTokIdFromUrl(cleanUrl);
+          if (vidId) {
+            const fallbackData = {
+              id: String(vidId),
+              title: oe?.title || 'TikTok Video',
+              region: 'VN',
+              duration: 0,
+              width: Number(oe?.thumbnail_width || 1080),
+              height: Number(oe?.thumbnail_height || 1920),
+              hdplay: `https://www.tikwm.com/video/media/hdplay/${vidId}.mp4`,
+              play: `https://www.tikwm.com/video/media/play/${vidId}.mp4`,
+              origin_cover: oe?.thumbnail_url || '',
+              cover: oe?.thumbnail_url || '',
+              music: `https://www.tikwm.com/video/music/${vidId}.mp3`,
+              music_info: {
+                title: 'Original Sound',
+                author: oe?.author_name || 'TikTok',
+                play: `https://www.tikwm.com/video/music/${vidId}.mp3`,
+                original: true
+              },
+              author: {
+                unique_id: oe?.author_unique_id || 'tiktok',
+                nickname: oe?.author_name || 'TikTok Creator',
+                avatar: oe?.thumbnail_url || ''
+              },
+              images: null,
+              play_count: 0,
+              digg_count: 0,
+              comment_count: 0,
+              collect_count: 0,
+              share_count: 0,
+              download_count: 0,
+              create_time: 0
+            };
+            unifiedTikTokCache.set(cleanUrl, fallbackData);
+            return fallbackData;
+          }
+        } catch {}
+
+        const netErr = new Error('NETWORK_OR_SERVER_BUSY');
+        netErr.code = 'NETWORK_OR_SERVER_BUSY';
+        throw netErr;
+      }
+
+      // =======================================================================
+      // 5. HARDWARE DECODER & MP4 BINARY HEADER INSPECTOR (mdhd / stts / stsz / avc1 / hvc1)
+      // =======================================================================
+      function probeStreamViaHardwareDecoder(streamUrl, timeoutMs = 2600) {
+        return new Promise((resolve) => {
+          if (!streamUrl) {
+            resolve(null);
+            return;
+          }
+          const v = document.createElement('video');
+          v.preload = 'metadata';
+          v.muted = true;
+          v.playsInline = true;
+          v.setAttribute('referrerpolicy', 'no-referrer');
+
+          let done = false;
+          const finish = (val) => {
+            if (done) return;
+            done = true;
+            clearTimeout(timer);
+            v.removeAttribute('src');
+            v.load();
+            resolve(val);
+          };
+
+          const timer = setTimeout(() => finish(null), timeoutMs);
+
+          v.addEventListener('loadedmetadata', () => {
+            if (v.videoWidth > 0 && v.videoHeight > 0) {
+              finish({
+                width: v.videoWidth,
+                height: v.videoHeight,
+                duration: Number.isFinite(v.duration) ? v.duration : 0
+              });
+            } else {
+              finish(null);
+            }
+          });
+
+          v.addEventListener('error', () => finish(null));
+          v.src = streamUrl;
+        });
+      }
+
+      async function probeMp4BinaryHeader(mp4Url) {
+        if (!mp4Url) return null;
+
+        const candidates = [
+          mp4Url,
+          `https://corsproxy.io/?${encodeURIComponent(mp4Url)}`
+        ];
+
+        for (const targetUrl of candidates) {
+          const ctrl = new AbortController();
+          const timer = setTimeout(() => ctrl.abort(), 2600);
+          try {
+            const res = await fetch(targetUrl, {
+              method: 'GET',
+              referrerPolicy: 'no-referrer',
+              signal: ctrl.signal
+            });
+            if (!res.ok || !res.body) {
+              clearTimeout(timer);
+              continue;
+            }
+
+            const contentLength = Number(res.headers.get('content-length') || 0);
+            const reader = res.body.getReader();
+            const chunks = [];
+            let totalRead = 0;
+            const maxBytes = 131072; // 128 KB is plenty for moov/mdhd/stts header
+
+            while (totalRead < maxBytes) {
+              const { done, value } = await reader.read();
+              if (done) break;
+              if (value) {
+                chunks.push(value);
+                totalRead += value.byteLength;
+              }
+            }
+            ctrl.abort();
+            clearTimeout(timer);
+
+            if (totalRead < 512) continue;
+
+            const merged = new Uint8Array(totalRead);
+            let offset = 0;
+            for (const c of chunks) {
+              merged.set(c, offset);
+              offset += c.byteLength;
+            }
+
+            const parsed = parseIsoBmffBoxes(merged);
+            if (parsed) {
+              parsed.contentLength = contentLength;
+              return parsed;
+            }
+          } catch {
+            clearTimeout(timer);
+          }
+        }
+        return null;
+      }
+
+      function parseIsoBmffBoxes(bytes) {
+        const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+        let codec = null;
+        let width = 0;
+        let height = 0;
+        let videoTimescale = 0;
+        let videoDuration = 0;
+        let videoSampleCount = 0;
+        let sttsFps = 0;
+
+        for (let i = 0; i < bytes.length - 40; i++) {
+          const b0 = bytes[i], b1 = bytes[i + 1], b2 = bytes[i + 2], b3 = bytes[i + 3];
+          if (b0 === 0x61 && b1 === 0x76 && b2 === 0x63 && b3 === 0x31) {
+            if (!codec) codec = 'H.264 (AVC)';
+            const w = view.getUint16(i + 28, false);
+            const h = view.getUint16(i + 30, false);
+            if (w >= 144 && w <= 4320 && h >= 144 && h <= 4320) {
+              width = w;
+              height = h;
+            }
+          } else if (
+            (b0 === 0x68 && b1 === 0x76 && b2 === 0x63 && b3 === 0x31) ||
+            (b0 === 0x68 && b1 === 0x65 && b2 === 0x76 && b3 === 0x31)
+          ) {
+            if (!codec) codec = 'H.265 (ByteVC1 HDR)';
+            const w = view.getUint16(i + 28, false);
+            const h = view.getUint16(i + 30, false);
+            if (w >= 144 && w <= 4320 && h >= 144 && h <= 4320) {
+              width = w;
+              height = h;
+            }
+          }
+        }
+
+        for (let i = 0; i < bytes.length - 64; i++) {
+          if (
+            bytes[i] === 0x6d &&
+            bytes[i + 1] === 0x64 &&
+            bytes[i + 2] === 0x68 &&
+            bytes[i + 3] === 0x64
+          ) {
+            const ver = bytes[i + 4];
+            const tsPos = ver === 1 ? i + 24 : i + 16;
+            const durPos = ver === 1 ? i + 28 : i + 20;
+            if (durPos + 8 <= bytes.length) {
+              const ts = view.getUint32(tsPos, false);
+              const dur = ver === 1
+                ? view.getUint32(durPos + 4, false)
+                : view.getUint32(durPos, false);
+
+              let isVideoTrack = false;
+              const searchEnd = Math.min(bytes.length - 8, i + 4096);
+              for (let k = i + 24; k < searchEnd; k++) {
+                if (bytes[k] === 0x76 && bytes[k + 1] === 0x6d && bytes[k + 2] === 0x68 && bytes[k + 3] === 0x64) {
+                  isVideoTrack = true;
+                  break;
+                }
+                if (bytes[k] === 0x73 && bytes[k + 1] === 0x6d && bytes[k + 2] === 0x68 && bytes[k + 3] === 0x64) {
+                  break;
+                }
+              }
+
+              if (isVideoTrack && ts > 0 && dur > 0) {
+                videoTimescale = ts;
+                videoDuration = dur;
+
+                const trackSearchLimit = Math.min(bytes.length - 24, i + 65536);
+                for (let m = i + 24; m < trackSearchLimit; m++) {
+                  if (
+                    bytes[m] === 0x73 &&
+                    bytes[m + 1] === 0x74 &&
+                    bytes[m + 2] === 0x74 &&
+                    bytes[m + 3] === 0x73
+                  ) {
+                    const entryCount = view.getUint32(m + 8, false);
+                    if (entryCount > 0 && entryCount < 20000 && m + 20 <= bytes.length) {
+                      const sCount = view.getUint32(m + 12, false);
+                      const sDelta = view.getUint32(m + 16, false);
+                      if (sCount > 0 && sDelta > 0) {
+                        const calc = videoTimescale / sDelta;
+                        if (calc >= 10 && calc <= 120) {
+                          sttsFps = Math.round(calc);
+                        }
+                      }
+                    }
+                  }
+                  if (
+                    bytes[m] === 0x73 &&
+                    bytes[m + 1] === 0x74 &&
+                    bytes[m + 2] === 0x73 &&
+                    bytes[m + 3] === 0x7a
+                  ) {
+                    const count = view.getUint32(m + 12, false);
+                    if (count > 5 && count < 500000) {
+                      videoSampleCount = count;
+                      break;
+                    }
+                  }
+                }
+                break;
+              }
+            }
+          }
+        }
+
+        let finalFps = null;
+        if (videoSampleCount > 0 && videoTimescale > 0 && videoDuration > 0) {
+          const sec = videoDuration / videoTimescale;
+          if (sec > 0.2) {
+            const exact = videoSampleCount / sec;
+            if (exact >= 10 && exact <= 120) {
+              finalFps = Math.round(exact);
+            }
+          }
+        }
+        if (!finalFps && sttsFps > 0) {
+          finalFps = sttsFps;
+        }
+
+        return {
+          codec,
+          width: width > 0 ? width : null,
+          height: height > 0 ? height : null,
+          fps: finalFps
+        };
+      }
+
+      // =======================================================================
+      // 6. TẢI TIKTOK & CHECK TIKTOK DATA BUILDERS
+      // =======================================================================
+      async function buildTikTokDownloadMedia(url) {
+        const d = await resolveUnifiedTikTokData(url);
+        const isSlideshow = Array.isArray(d.images) && d.images.length > 0;
+
+        const tikwmStdEndpoint = d.id ? `https://www.tikwm.com/video/media/play/${d.id}.mp4` : null;
+        const tikwmHdEndpoint = d.id ? `https://www.tikwm.com/video/media/hdplay/${d.id}.mp4` : null;
+        const directHdUrl = fixUrl(d.hdplay);
+        const directStdUrl = fixUrl(d.play);
+
+        // Priority stream candidates for preview & binary download
+        const hdCandidates = [
+          directHdUrl,
+          tikwmHdEndpoint,
+          directStdUrl,
+          tikwmStdEndpoint
+        ].filter(Boolean);
+
+        // Priority order for reliable binary fetch (CDN redirect endpoints + direct streams)
+        const downloadCandidates = [
+          tikwmStdEndpoint,
+          directStdUrl,
+          tikwmHdEndpoint,
+          directHdUrl
+        ].filter(Boolean);
+
+        const realW = d.width > 0 ? Number(d.width) : 0;
+        const realH = d.height > 0 ? Number(d.height) : 0;
+        const shortSide = realW && realH ? Math.min(realW, realH) : null;
+        const qualityBadge = isSlideshow
+          ? `${d.images.length} Ảnh`
+          : (shortSide ? `${shortSide}p (${realW}×${realH})` : 'HD Gốc');
+
+        const photos = isSlideshow
+          ? d.images.map((img, i) => {
+              const cleanImg = fixUrl(img);
+              return {
+                index: i,
+                url: cleanImg,
+                ext: String(cleanImg || '').toLowerCase().includes('.webp') ? 'webp' : 'jpg'
+              };
+            }).filter((p) => Boolean(p.url))
+          : [];
+
+        const audioCandidates = [
+          fixUrl(d.music || d.music_info?.play),
+          d.id ? `https://www.tikwm.com/video/music/${d.id}.mp3` : null,
+          ...downloadCandidates
+        ].filter(Boolean);
+
+        return {
+          postId: String(d.id || ''),
+          mediaType: isSlideshow ? 'photo' : 'video',
+          duration: d.duration > 0 ? Number(d.duration) : 0,
+          title: d.title || 'TikTok Media',
+          author: d.author?.nickname || d.author?.unique_id || 'TikTok',
+          thumbnail: fixUrl(d.origin_cover || d.cover) || (photos[0]?.url ?? ''),
+          qualityBadge,
+          primaryVideoUrl: hdCandidates[0] || null,
+          previewStreams: hdCandidates,
+          downloadStreams: downloadCandidates,
+          audioStreams: audioCandidates,
+          audioUrl: audioCandidates[0] || null,
+          photos
+        };
+      }
+
+      function revealQualityField(elementId, valueText) {
+        const el = document.getElementById(elementId);
+        if (!el) return;
+        el.innerHTML = `<span class="val-revealed">${valueText}</span>`;
+      }
+
+      async function buildCheckTikTokTelemetry(url) {
+        const d = await resolveUnifiedTikTokData(url);
+        const isSlideshow = Array.isArray(d.images) && d.images.length > 0;
+        const hdUrl = fixUrl(d.hdplay) || (d.id ? `https://www.tikwm.com/video/media/hdplay/${d.id}.mp4` : null);
+        const stdUrl = fixUrl(d.play) || (d.id ? `https://www.tikwm.com/video/media/play/${d.id}.mp4` : null);
+
+        const apiW = d.width > 0 ? Number(d.width) : 0;
+        const apiH = d.height > 0 ? Number(d.height) : 0;
+        const duration = Number(d.duration || 0);
+        const hdSize = Number(d.hd_size || d.size || 0);
+        const stdSize = Number(d.size || 0);
+
+        const views = Number(d.play_count || 0);
+        const likes = Number(d.digg_count || 0);
+        const comments = Number(d.comment_count || 0);
+        const saves = Number(d.collect_count || 0);
+        const shares = Number(d.share_count || 0);
+        const downloads = Number(d.download_count || 0);
+
+        const totalInteractions = likes + comments + saves + shares;
+        const engagementRate = views > 0 ? ((totalInteractions / views) * 100).toFixed(2) : '0.00';
+
+        const rawRegion = String(d.region || 'VN').toUpperCase();
+        const regionLabel = rawRegion ? (REGION_NAMES[rawRegion] || `Quốc gia (${rawRegion})`) : 'Quốc tế (Global)';
+        const regionFlagSvg = getCustomCountryFlagSvg(rawRegion);
+
+        const nowUnix = Math.floor(Date.now() / 1000);
+        const createUnix = Number(d.create_time || 0);
+        const ageHours = createUnix > 0 ? Math.max(0.1, (nowUnix - createUnix) / 3600) : 24;
+
+        let isShadowbanned = false;
+        const detectedIssues = [];
+
+        if (views === 0 && ageHours > 1.5) {
+          isShadowbanned = true;
+          detectedIssues.push('0 View sau khi đăng (Đang giữ kiểm duyệt / Chặn phân phối)');
+        } else if (views > 0 && views < 30 && ageHours > 12) {
+          isShadowbanned = true;
+          detectedIssues.push('Lượt xem bị kẹt dưới 30 sau hơn 12 giờ (Hạn chế đề xuất)');
+        }
+
+        if (!d.music && !d.music_info?.play && !isSlideshow) {
+          detectedIssues.push('Luồng âm thanh bị tắt hoặc dính bản quyền nhạc');
+        }
+
+        const shadowbanYnHtml = isShadowbanned
+          ? '<span class="yn-pill-yes">Yes</span><span>Có dấu hiệu hạn chế</span>'
+          : '<span class="yn-pill-no">No</span><span>Không bị Shadowban</span>';
+
+        const videoIssuesText = detectedIssues.length > 0
+          ? detectedIssues.join(' • ')
+          : 'Không phát hiện lỗi • Video hợp lệ 100%';
+
+        const fypStatus = isShadowbanned
+          ? 'Bị giới hạn đề xuất lên Xu hướng (For You)'
+          : (views >= 100 && Number(engagementRate) >= 3.0
+              ? `Đề xuất tốt (${engagementRate}% tương tác)`
+              : 'Đủ điều kiện phân phối lên For You (FYP)');
+
+        const caption = String(d.title || '');
+        const hashtagMatches = caption.match(/#[\p{L}\p{N}_]+/gu) || [];
+
+        const infoObj = {
+          postId: String(d.id || ''),
+          isSlideshow,
+          slideCount: isSlideshow ? d.images.length : 0,
+          caption: caption || '(Không có mô tả)',
+          createUnix,
+          author: {
+            uniqueId: d.author?.unique_id || 'tiktok',
+            nickname: d.author?.nickname || d.author?.unique_id || 'TikTok Creator',
+            avatar: fixUrl(d.author?.avatar) || ''
+          },
+          quality: {
+            scanning: !isSlideshow,
+            phoneRes: isSlideshow ? `Slideshow (${d.images.length} Ảnh Gốc)` : null,
+            phoneFps: isSlideshow ? 'Ảnh tĩnh' : null,
+            phoneBitrate: isSlideshow ? 'Lossless WebP/JPG' : null,
+            phoneSize: isSlideshow ? 'Tự động theo ảnh' : null,
+            webRes: isSlideshow ? `Slideshow (${d.images.length} Ảnh WebP)` : null,
+            webFps: isSlideshow ? 'Ảnh tĩnh' : null,
+            webBitrate: isSlideshow ? 'Standard WebP' : null,
+            webSize: isSlideshow ? 'Tự động theo ảnh' : null,
+            masterBadge: isSlideshow ? `${d.images.length} ẢNH GỐC` : 'ĐANG QUÉT STREAM...'
+          },
+          stats: {
+            views,
+            likes,
+            comments,
+            saves,
+            shares,
+            downloads,
+            engagementRate: `${engagementRate}% ER`
+          },
+          security: {
+            regionHtml: `${regionFlagSvg}<span>${regionLabel}</span>`,
+            shadowbanYnHtml,
+            shadowbanPill: isShadowbanned ? 'SHADOWBAN: YES' : 'SHADOWBAN: NO',
+            videoIssuesText,
+            fypStatus,
+            adStatus: d.is_ad ? 'Video Quảng cáo (Sponsored)' : (d.commercial_video ? 'Nội dung Thương mại' : 'Video Tự nhiên (Organic)')
+          },
+          info: {
+            duration: duration > 0 ? `${Math.round(duration)} giây (${formatClock(duration)})` : 'Slideshow',
+            aspectRatio: apiW && apiH
+              ? `${apiW}×${apiH} (${apiW < apiH ? '9:16 Dọc' : apiW > apiH ? '16:9 Ngang' : '1:1 Vuông'})`
+              : '9:16 Dọc',
+            musicTitle: d.music_info?.title || 'Âm thanh gốc',
+            musicAuthor: d.music_info?.author || d.author?.nickname || 'Tác giả',
+            musicOriginal: d.music_info?.original ? 'Âm thanh gốc của video (Original)' : 'Nhạc nền ghép từ TikTok',
+            hashtags: hashtagMatches.length > 0 ? hashtagMatches.join(' ') : 'Không dùng hashtag'
+          }
+        };
+
+        // Immediately launch parallel hardware + binary MP4 header probe (Zero artificial delay!)
+        if (!isSlideshow) {
+          Promise.all([
+            probeStreamViaHardwareDecoder(hdUrl, 2400),
+            probeStreamViaHardwareDecoder(stdUrl, 2400),
+            probeMp4BinaryHeader(hdUrl),
+            probeMp4BinaryHeader(stdUrl)
+          ]).then(([pDec, wDec, pBox, wBox]) => {
+            const pW = pDec?.width || pBox?.width || apiW || 1080;
+            const pH = pDec?.height || pBox?.height || apiH || 1920;
+            const pShort = Math.min(pW, pH);
+
+            const defaultWebShort = stdSize && hdSize && stdSize < hdSize * 0.78 ? Math.min(720, pShort) : pShort;
+            const wW = wDec?.width || wBox?.width || Math.round((pW / pShort) * defaultWebShort);
+            const wH = wDec?.height || wBox?.height || Math.round((pH / pShort) * defaultWebShort);
+            const wShort = Math.min(wW, wH);
+
+            const realHdBytes = hdSize || pBox?.contentLength || 0;
+            const realWebBytes = stdSize || wBox?.contentLength || 0;
+            const realDur = duration || pDec?.duration || wDec?.duration || 0;
+
+            const phoneBitrateKbps = realHdBytes > 0 && realDur > 0 ? Math.round((realHdBytes * 8) / realDur / 1000) : null;
+            const webBitrateKbps = realWebBytes > 0 && realDur > 0 ? Math.round((realWebBytes * 8) / realDur / 1000) : null;
+
+            const fallbackFps = phoneBitrateKbps && phoneBitrateKbps > 3200 ? 60 : 30;
+            const pFps = pBox?.fps || wBox?.fps || fallbackFps;
+            const wFps = wBox?.fps || Math.min(30, pFps);
+
+            const pCodec = pBox?.codec || 'H.264 (AVC)';
+            const wCodec = wBox?.codec || 'H.264 (AVC)';
+
+            infoObj.quality.scanning = false;
+            infoObj.quality.phoneRes = `${pShort}p (${pW}×${pH})`;
+            infoObj.quality.phoneFps = `${pFps} FPS (Chuẩn gốc)`;
+            infoObj.quality.phoneBitrate = phoneBitrateKbps ? `${pCodec} • ${phoneBitrateKbps.toLocaleString('vi-VN')} kbps` : pCodec;
+            infoObj.quality.phoneSize = formatBytes(realHdBytes);
+
+            infoObj.quality.webRes = `${wShort}p (${wW}×${wH})`;
+            infoObj.quality.webFps = `${wFps} FPS (Chuẩn Web)`;
+            infoObj.quality.webBitrate = webBitrateKbps ? `${wCodec} • ${webBitrateKbps.toLocaleString('vi-VN')} kbps` : wCodec;
+            infoObj.quality.webSize = formatBytes(realWebBytes);
+            infoObj.quality.masterBadge = `${pShort}P • ${pFps} FPS`;
+
+            infoObj.info.aspectRatio = `${pW}×${pH} (${pW < pH ? '9:16 Dọc' : pW > pH ? '16:9 Ngang' : '1:1 Vuông'})`;
+
+            if (activePlatform === 'check' && platformState.check.info?.postId === infoObj.postId) {
+              document.getElementById('chk-fps-master-badge').textContent = infoObj.quality.masterBadge;
+              revealQualityField('chk-phone-res', infoObj.quality.phoneRes);
+              revealQualityField('chk-phone-fps', infoObj.quality.phoneFps);
+              revealQualityField('chk-phone-bitrate', infoObj.quality.phoneBitrate);
+              revealQualityField('chk-phone-size', infoObj.quality.phoneSize);
+
+              revealQualityField('chk-web-res', infoObj.quality.webRes);
+              revealQualityField('chk-web-fps', infoObj.quality.webFps);
+              revealQualityField('chk-web-bitrate', infoObj.quality.webBitrate);
+              revealQualityField('chk-web-size', infoObj.quality.webSize);
+              document.getElementById('chk-aspect').textContent = infoObj.info.aspectRatio;
+            }
+          }).catch(() => {});
+        }
+
+        return infoObj;
+      }
+
+      function renderCheckTikTokResult(info) {
+        checkResultArea.classList.remove('hidden');
+
+        const authorLink = document.getElementById('chk-author-link');
+        authorLink.href = `https://www.tiktok.com/@${encodeURIComponent(info.author.uniqueId)}`;
+        document.getElementById('chk-avatar').src = info.author.avatar;
+        document.getElementById('chk-nickname').textContent = info.author.nickname;
+        document.getElementById('chk-handle').textContent = `@${info.author.uniqueId}`;
+
+        if (info.createUnix > 0) {
+          const dt = new Date(info.createUnix * 1000);
+          const pad = (n) => String(n).padStart(2, '0');
+          document.getElementById('chk-upload-date').textContent =
+            `${pad(dt.getDate())}/${pad(dt.getMonth() + 1)}/${dt.getFullYear()} ${pad(dt.getHours())}:${pad(dt.getMinutes())}`;
+          const diffSec = Math.max(0, Math.floor(Date.now() / 1000) - info.createUnix);
+          const days = Math.floor(diffSec / 86400);
+          const hours = Math.floor((diffSec % 86400) / 3600);
+          document.getElementById('chk-upload-ago').textContent =
+            days > 0 ? `Đăng ${days} ngày ${hours} giờ trước` : `Đăng ${Math.max(1, hours)} giờ trước`;
+        } else {
+          document.getElementById('chk-upload-date').textContent = 'Mới đăng';
+          document.getElementById('chk-upload-ago').textContent = '';
+        }
+
+        document.getElementById('chk-description').textContent = info.caption;
+
+        // Quality Section: Show scanning dots (• • •) until exact stream probe finishes
+        document.getElementById('chk-fps-master-badge').textContent = info.quality.masterBadge;
+        if (info.quality.scanning) {
+          document.getElementById('chk-phone-res').innerHTML = SCAN_DOTS_HTML;
+          document.getElementById('chk-phone-fps').innerHTML = SCAN_DOTS_HTML;
+          document.getElementById('chk-phone-bitrate').innerHTML = SCAN_DOTS_HTML;
+          document.getElementById('chk-phone-size').innerHTML = SCAN_DOTS_HTML;
+
+          document.getElementById('chk-web-res').innerHTML = SCAN_DOTS_HTML;
+          document.getElementById('chk-web-fps').innerHTML = SCAN_DOTS_HTML;
+          document.getElementById('chk-web-bitrate').innerHTML = SCAN_DOTS_HTML;
+          document.getElementById('chk-web-size').innerHTML = SCAN_DOTS_HTML;
+        } else {
+          revealQualityField('chk-phone-res', info.quality.phoneRes);
+          revealQualityField('chk-phone-fps', info.quality.phoneFps);
+          revealQualityField('chk-phone-bitrate', info.quality.phoneBitrate);
+          revealQualityField('chk-phone-size', info.quality.phoneSize);
+
+          revealQualityField('chk-web-res', info.quality.webRes);
+          revealQualityField('chk-web-fps', info.quality.webFps);
+          revealQualityField('chk-web-bitrate', info.quality.webBitrate);
+          revealQualityField('chk-web-size', info.quality.webSize);
+        }
+
+        document.getElementById('chk-engagement-rate').textContent = info.stats.engagementRate;
+        document.getElementById('chk-stat-views').textContent = formatNumber(info.stats.views);
+        document.getElementById('chk-stat-likes').textContent = formatNumber(info.stats.likes);
+        document.getElementById('chk-stat-comments').textContent = formatNumber(info.stats.comments);
+        document.getElementById('chk-stat-saves').textContent = formatNumber(info.stats.saves);
+        document.getElementById('chk-stat-shares').textContent = formatNumber(info.stats.shares);
+        document.getElementById('chk-stat-downloads').textContent = formatNumber(info.stats.downloads);
+
+        document.getElementById('chk-shadowban-pill').textContent = info.security.shadowbanPill;
+        document.getElementById('chk-region').innerHTML = info.security.regionHtml;
+        document.getElementById('chk-shadowban-yn').innerHTML = info.security.shadowbanYnHtml;
+        document.getElementById('chk-video-issues').textContent = info.security.videoIssuesText;
+        document.getElementById('chk-fyp-status').textContent = info.security.fypStatus;
+        document.getElementById('chk-ad-status').textContent = info.security.adStatus;
+
+        document.getElementById('chk-video-id').textContent = info.postId;
+        document.getElementById('chk-post-type').textContent = info.isSlideshow
+          ? `Ảnh trượt Slideshow (${info.slideCount} ảnh)`
+          : 'Video MP4 Gốc (Master HD)';
+        document.getElementById('chk-duration').textContent = info.info.duration;
+        document.getElementById('chk-aspect').textContent = info.info.aspectRatio;
+        document.getElementById('chk-music-title').textContent = info.info.musicTitle;
+        document.getElementById('chk-music-author').textContent = info.info.musicAuthor;
+        document.getElementById('chk-music-original').textContent = info.info.musicOriginal;
+        document.getElementById('chk-hashtags').textContent = info.info.hashtags;
+      }
+
+      // =======================================================================
+      // 7. APP-COMPATIBLE IN-PLACE BINARY DOWNLOADER (CAPCUT / ALIGHT MOTION / GALLERY READY)
+      //    - Verifies MP4 ('ftyp') and MP3 ('ID3'/ADTS) magic bytes
+      //    - Assigns strict 'video/mp4' & 'audio/mpeg' File MIME metadata
+      //    - Never opens external tiktokcdn links
+      // =======================================================================
+      let lastSec = 0;
+      function pad2(n) { return String(n).padStart(2, '0'); }
+
+      function createAppCompatibleFilename(kind, ext) {
+        const nowSec = Math.floor(Date.now() / 1000);
+        lastSec = nowSec <= lastSec ? lastSec + 1 : nowSec;
+        const d = new Date(lastSec * 1000);
+        const stamp = `${d.getFullYear()}${pad2(d.getMonth() + 1)}${pad2(d.getDate())}_${pad2(d.getHours())}${pad2(d.getMinutes())}${pad2(d.getSeconds())}`;
+        return `Godly_TikTok_${kind}_${stamp}.${ext}`;
+      }
+
+      function sanitizeMediaBuffer(uint8, expectedKind) {
+        if (!uint8 || uint8.byteLength < 512) return null;
+
+        // Reject HTML error pages masquerading as binary
+        if (uint8[0] === 0x3c && (uint8[1] === 0x21 || uint8[1] === 0x68 || uint8[1] === 0x48)) {
+          return null;
+        }
+
+        if (expectedKind === 'video') {
+          for (let i = 4; i < Math.min(64, uint8.byteLength - 4); i++) {
+            if (
+              uint8[i] === 0x66 &&
+              uint8[i + 1] === 0x74 &&
+              uint8[i + 2] === 0x79 &&
+              uint8[i + 3] === 0x70
+            ) {
+              const boxStart = i - 4;
+              return boxStart > 0 ? uint8.subarray(boxStart) : uint8;
+            }
+          }
+        } else if (expectedKind === 'audio') {
+          if (
+            (uint8[0] === 0x49 && uint8[1] === 0x44 && uint8[2] === 0x33) ||
+            (uint8[0] === 0xff && (uint8[1] & 0xe0) === 0xe0)
+          ) {
+            return uint8;
+          }
+          for (let i = 4; i < Math.min(64, uint8.byteLength - 4); i++) {
+            if (
+              uint8[i] === 0x66 &&
+              uint8[i + 1] === 0x74 &&
+              uint8[i + 2] === 0x79 &&
+              uint8[i + 3] === 0x70
+            ) {
+              const boxStart = i - 4;
+              return boxStart > 0 ? uint8.subarray(boxStart) : uint8;
+            }
+          }
+        }
+
+        return uint8;
+      }
+
+      async function fetchVerifiedMediaFile(candidateUrls, expectedKind, mimeType, filename, onProgress) {
+        const uniqueUrls = Array.from(new Set((candidateUrls || []).filter(Boolean)));
+        const allEndpoints = [];
+        for (const rawUrl of uniqueUrls) {
+          allEndpoints.push(rawUrl);
+          allEndpoints.push(`https://corsproxy.io/?url=${encodeURIComponent(rawUrl)}`);
+          allEndpoints.push(`https://corsproxy.io/?${encodeURIComponent(rawUrl)}`);
+          allEndpoints.push(`https://cors.eu.org/${rawUrl}`);
+          allEndpoints.push(`https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(rawUrl)}`);
+        }
+
+        for (const ep of allEndpoints) {
+          const ctrl = new AbortController();
+          const timeoutId = setTimeout(() => ctrl.abort(), 25000);
+          try {
+            const res = await fetch(ep, {
+              method: 'GET',
+              referrerPolicy: 'no-referrer',
+              signal: ctrl.signal
+            });
+            if (!res.ok || !res.body) {
+              clearTimeout(timeoutId);
+              continue;
+            }
+
+            const totalBytes = Number(res.headers.get('content-length') || 0);
+            const reader = res.body.getReader();
+            const chunks = [];
+            let received = 0;
+
+            while (true) {
+              const { done, value } = await reader.read();
+              if (done) break;
+              if (value) {
+                chunks.push(value);
+                received += value.byteLength;
+                if (onProgress && totalBytes > 0) {
+                  const pct = Math.min(99, Math.round((received / totalBytes) * 100));
+                  onProgress(pct);
+                }
+              }
+            }
+            clearTimeout(timeoutId);
+
+            if (received < 1024) continue;
+
+            const fullBuffer = new Uint8Array(received);
+            let offset = 0;
+            for (const c of chunks) {
+              fullBuffer.set(c, offset);
+              offset += c.byteLength;
+            }
+
+            const cleanBytes = sanitizeMediaBuffer(fullBuffer, expectedKind);
+            if (!cleanBytes) continue;
+
+            if (onProgress) onProgress(100);
+
+            const strictBlob = new Blob([cleanBytes], { type: mimeType });
+            try {
+              return new File([strictBlob], filename, {
+                type: mimeType,
+                lastModified: Date.now()
+              });
+            } catch {
+              return strictBlob;
+            }
+          } catch {
+            clearTimeout(timeoutId);
+          }
+        }
+        return null;
+      }
+
+      function triggerLocalFileSave(fileOrBlob, filename) {
+        const blobUrl = URL.createObjectURL(fileOrBlob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = blobUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+          a.remove();
+          URL.revokeObjectURL(blobUrl);
+        }, 30000);
+      }
+
+      const btnDlVideo = document.getElementById('btn-dl-video');
+      const btnDlVideoText = document.getElementById('btn-dl-video-text');
+      const vidDlProgress = document.getElementById('vid-dl-progress');
+
+      const btnDlAudio = document.getElementById('btn-dl-audio');
+      const btnDlAudioText = document.getElementById('btn-dl-audio-text');
+      const audDlProgress = document.getElementById('aud-dl-progress');
+
+      btnDlVideo.addEventListener('click', async () => {
+        const st = platformState.tiktok;
+        if (!st || !st.media || btnDlVideo.disabled) return;
+
+        const media = st.media;
+        const filename = createAppCompatibleFilename('HD_Video', 'mp4');
+        const cacheKey = `vid_${media.postId}`;
+
+        if (prewarmedBlobCache.has(cacheKey)) {
+          triggerLocalFileSave(prewarmedBlobCache.get(cacheKey), filename);
+          showToast(`Đã lưu Video HD: ${filename}`);
+          return;
+        }
+
+        btnDlVideo.disabled = true;
+        vidDlProgress.style.width = '8%';
+        btnDlVideoText.textContent = 'Đang tải HD 8%...';
+
+        const fileObj = await fetchVerifiedMediaFile(
+          media.downloadStreams || media.previewStreams,
+          'video',
+          'video/mp4',
+          filename,
+          (pct) => {
+            vidDlProgress.style.width = `${pct}%`;
+            btnDlVideoText.textContent = `Đang tải HD ${pct}%...`;
+          }
+        );
+
+        btnDlVideo.disabled = false;
+        setTimeout(() => { vidDlProgress.style.width = '0%'; }, 400);
+        btnDlVideoText.textContent = 'Tải Video (MP4)';
+
+        if (fileObj) {
+          prewarmedBlobCache.set(cacheKey, fileObj);
+          triggerLocalFileSave(fileObj, filename);
+          showToast('Đã lưu Video chuẩn MP4 vào máy!');
+        } else {
+          showToast('Mạng đang nghẽn, vui lòng bấm Tải lại sau 1 giây');
+        }
+      });
+
+      btnDlAudio.addEventListener('click', async () => {
+        const st = platformState.tiktok;
+        if (!st || !st.media || btnDlAudio.disabled) return;
+
+        const media = st.media;
+        const filename = createAppCompatibleFilename('Original_Audio', 'mp3');
+        const cacheKey = `aud_${media.postId}`;
+
+        if (prewarmedBlobCache.has(cacheKey)) {
+          triggerLocalFileSave(prewarmedBlobCache.get(cacheKey), filename);
+          showToast(`Đã lưu Nhạc MP3: ${filename}`);
+          return;
+        }
+
+        btnDlAudio.disabled = true;
+        audDlProgress.style.width = '10%';
+        btnDlAudioText.textContent = 'Đang tải MP3 10%...';
+
+        const fileObj = await fetchVerifiedMediaFile(
+          media.audioStreams,
+          'audio',
+          'audio/mpeg',
+          filename,
+          (pct) => {
+            audDlProgress.style.width = `${pct}%`;
+            btnDlAudioText.textContent = `Đang tải MP3 ${pct}%...`;
+          }
+        );
+
+        btnDlAudio.disabled = false;
+        setTimeout(() => { audDlProgress.style.width = '0%'; }, 400);
+        btnDlAudioText.textContent = 'Tải Nhạc (MP3)';
+
+        if (fileObj) {
+          prewarmedBlobCache.set(cacheKey, fileObj);
+          triggerLocalFileSave(fileObj, filename);
+          showToast('Đã lưu Nhạc chuẩn MP3 vào máy!');
+        } else {
+          showToast('Mạng đang nghẽn, vui lòng bấm Tải lại sau 1 giây');
+        }
+      });
+
+      async function downloadSinglePhotoInPlace(photoUrl, idx, ext, btnEl) {
+        if (btnEl.disabled) return;
+        const origLabel = btnEl.textContent;
+        btnEl.disabled = true;
+        btnEl.textContent = 'Đang lưu...';
+
+        const filename = createAppCompatibleFilename(`Photo_${pad2(idx + 1)}`, ext);
+        const mime = ext === 'webp' ? 'image/webp' : 'image/jpeg';
+
+        const fileObj = await fetchVerifiedMediaFile([photoUrl], 'image', mime, filename, null);
+        btnEl.disabled = false;
+        btnEl.textContent = origLabel;
+
+        if (fileObj) {
+          triggerLocalFileSave(fileObj, filename);
+          showToast(`Đã lưu Ảnh #${idx + 1} vào máy`);
+        } else {
+          showToast('Vui lòng thử lại sau giây lát');
+        }
+      }
+
+      async function downloadPhotosZipInstant(photos) {
+        if (!photos || !photos.length || typeof JSZip === 'undefined') return;
+        const zipName = createAppCompatibleFilename('Slideshow_Photos', 'zip');
+        showToast(`Đang đóng gói ZIP (${photos.length} ảnh)...`);
+
+        try {
+          const zip = new JSZip();
+          await Promise.all(
+            photos.map(async (p, i) => {
+              const imgName = `Godly_Photo_${pad2(i + 1)}.${p.ext}`;
+              for (const u of [
+                p.url,
+                `https://corsproxy.io/?${encodeURIComponent(p.url)}`,
+                `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(p.url)}`
+              ]) {
+                try {
+                  const r = await fetch(u, { referrerPolicy: 'no-referrer' });
+                  if (r.ok) {
+                    const buf = await r.arrayBuffer();
+                    if (buf.byteLength > 256) {
+                      zip.file(imgName, buf, { compression: 'STORE' });
+                      break;
+                    }
+                  }
+                } catch {}
+              }
+            })
+          );
+          const blob = await zip.generateAsync({ type: 'blob', compression: 'STORE' });
+          triggerLocalFileSave(blob, zipName);
+          showToast(`Đã lưu trọn bộ ZIP: ${zipName}`);
+        } catch {}
+      }
+
+      // =======================================================================
+      // 8. WORKSPACE RENDERER & FORM CONTROLLER
+      // =======================================================================
+      const viewVideo = document.getElementById('view-video');
+      const viewPhoto = document.getElementById('view-photo');
+
+      function renderResultForActiveTab() {
+        const st = platformState.tiktok;
+        const media = st?.media;
+        if (!media) {
+          resultArea.classList.add('hidden');
+          return;
+        }
+
+        pauseBothVideoAndAudio();
+        resultArea.classList.remove('hidden');
+
+        document.getElementById('res-thumb').src = media.thumbnail || '';
+        document.getElementById('res-title').textContent = media.title;
+        document.getElementById('res-author').textContent = `@${media.author}`;
+        document.getElementById('res-badge-quality').textContent = media.qualityBadge;
+        document.getElementById('res-badge-duration').textContent = media.duration > 0 ? formatClock(media.duration) : '';
+
+        if (media.mediaType === 'video') {
+          viewVideo.classList.remove('hidden');
+          viewPhoto.classList.add('hidden');
+
+          // Reset accordion drawer to closed by default so layout stays clean
+          isMusicDrawerOpen = false;
+          audioAccordionShell.classList.remove('is-open');
+          musicToggleChevron.classList.remove('chevron-open');
+          musicToggleLabel.textContent = 'Hiện Nhạc';
+
+          const realDurFormatted = media.duration > 0 ? formatClock(media.duration) : '0:00';
+          vidTimeCurrent.textContent = '0:00';
+          vidTimeTotal.textContent = realDurFormatted;
+          vidSeekSlider.value = '0';
+
+          audSeekSlider.value = '0';
+          audTimeLabel.textContent = `0:00 / ${realDurFormatted}`;
+
+          videoEl.poster = media.thumbnail || '';
+          videoPosterFallback.src = media.thumbnail || '';
+          videoPosterFallback.classList.add('hidden');
+          videoEl.classList.remove('hidden');
+
+          currentVideoFallbackList = (media.previewStreams || []).filter(Boolean);
+          currentVideoFallbackIdx = 0;
+
+          if (currentVideoFallbackList.length > 0) {
+            videoEl.src = currentVideoFallbackList[0];
+          } else {
+            videoEl.removeAttribute('src');
+            videoEl.classList.add('hidden');
+            videoPosterFallback.classList.remove('hidden');
+          }
+
+          currentAudioFallbackList = (media.audioStreams || []).filter(Boolean);
+          currentAudioFallbackIdx = 0;
+
+          if (currentAudioFallbackList.length > 0) {
+            audioEl.src = currentAudioFallbackList[0];
+          } else {
+            audioEl.removeAttribute('src');
+          }
+        } else {
+          viewVideo.classList.add('hidden');
+          viewPhoto.classList.remove('hidden');
+
+          document.getElementById('photo-summary-text').textContent =
+            `Bộ ảnh gồm ${media.photos.length} tấm (Chất lượng gốc HD)`;
+
+          const grid = document.getElementById('photo-list-grid');
+          grid.innerHTML = '';
+
+          media.photos.forEach((p, idx) => {
+            const card = document.createElement('div');
+            card.className = 'photo-card';
+            card.innerHTML = `
+              <div style="position:relative;aspect-ratio:3/4;width:100%;overflow:hidden;border-radius:16px;background:#f1f5f9;">
+                <img src="${p.url}" alt="Ảnh ${idx + 1}" referrerpolicy="no-referrer" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
+                <span style="position:absolute;top:7px;left:7px;border-radius:999px;background:rgba(15,23,42,0.78);padding:2px 8px;font-size:10px;font-weight:800;color:#ffffff;">#${idx + 1}</span>
+              </div>
+              <button type="button" class="btn-smooth btn-primary photo-dl-btn" style="width:100%;height:38px;border-radius:999px;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;">
+                Tải Ảnh #${idx + 1}
+              </button>
+            `;
+            const btn = card.querySelector('.photo-dl-btn');
+            btn.addEventListener('click', () => downloadSinglePhotoInPlace(p.url, idx, p.ext, btn));
+            grid.appendChild(card);
+          });
+        }
+      }
+
+      function showToast(text) {
+        const t = document.getElementById('toast');
+        document.getElementById('toast-text').textContent = text;
+        t.classList.remove('hidden');
+        clearTimeout(t._timer);
+        t._timer = setTimeout(() => {
+          t.classList.add('hidden');
+        }, 2600);
+      }
+
+      async function handleProcessSubmit() {
+        const raw = urlInput.value.trim();
+        if (!raw) {
+          urlInput.focus();
+          return;
+        }
+
+        const cleanUrl = extractCleanUrl(raw);
+        const targetEngine = activePlatform;
+        const st = platformState[targetEngine];
+        if (st.loading) return;
+
+        st.loading = true;
+        syncTabLoadingIndicators();
+
+        try {
+          if (targetEngine === 'check') {
+            const checkData = await buildCheckTikTokTelemetry(cleanUrl);
+            st.info = checkData;
+          } else {
+            const tkMedia = await buildTikTokDownloadMedia(cleanUrl);
+            st.media = tkMedia;
+          }
+        } catch (err) {
+          if (err && err.code === 'INVALID_TIKTOK_LINK') {
+            showToast('Link chưa đúng định dạng TikTok (vt.tiktok.com / tiktok.com)');
+          } else {
+            showToast('Máy chủ đang bận, vui lòng bấm lại sau 1–2 giây');
+          }
+        } finally {
+          st.loading = false;
+          syncTabLoadingIndicators();
+        }
+      }
+
+      document.getElementById('download-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        handleProcessSubmit();
+      });
+
+      btnClear.addEventListener('click', () => {
+        urlInput.classList.add('input-dissolving');
+        btnClear.classList.add('hidden');
+        attachedIndicator.classList.add('hidden');
+        inputWrap.classList.remove('link-attached-active');
+        setTimeout(() => {
+          urlInput.value = '';
+          urlInput.classList.remove('input-dissolving');
+          urlInput.focus();
+        }, 140);
+      });
+
+      document.getElementById('btn-dl-zip').addEventListener('click', () => {
+        const st = platformState.tiktok;
+        if (!st || !st.media || !st.media.photos.length) return;
+        downloadPhotosZipInstant(st.media.photos);
+      });
+    })();
+  </script>
+</body>
+</html>
